@@ -1,0 +1,51 @@
+---
+title: "An extra gentle introduction to molecular evolution"
+author: "Stephanie J. Spielman"
+site: bookdown::bookdown_site
+documentclass: book
+output:
+  bookdown::gitbook: default
+github-repo: sjspielman/molev_intro
+# Forthcoming.. 
+#bibliography: "bibliography.bib"
+#biblio-style: "apalike"
+#link-citations: true
+#cover-image: cover.png
+---
+
+
+
+# Introduction
+
+**A WORK IN PROGRESS.** This document is temporary to organize the book, then will be split up into chapters with an associated `index.Rmd`.
+
+With apologies to Bayesians, analyses is ML-focused. This book is geared towards my students. Read and use at your peril if you are not my student.
+
+## Reading and interpreting phylogenies
+
+## The pipeline of phylogenetic reconstruction
+
+## Analyzing sequences in a phylogenetic context
+
+# Pre-requisites
+
+# Mutiple sequence alignments
+
+# Evolutionary models
+
+## Background: Markov models and chains
+
+## Flavors (DNA, protein, codon) and applications
+
+## Choosing a model
+
+# Building your phylogeny
+
+# Measuring evolutionary rates
+
+## Nucleotide and protein relative rates
+
+## Codon $dN/dS$ 
+
+## Mutation-selection models
+
