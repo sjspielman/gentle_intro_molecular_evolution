@@ -21,31 +21,145 @@ github-repo: sjspielman/molev_intro
 
 With apologies to Bayesians, analyses is ML-focused. This book is geared towards my students. Read and use at your peril if you are not my student.
 
+This considers only **genic evolution.** Intergenic or non-coding DNA also for sure evolves, but this tutorial/background focuses specifically on proteins and their coding regions. 
+
+**This is an area of active research.** By definition this cannot be a comprehensive and fully up-to-date document. This will orient you to the background so that we can learn the active research together.
+
+# Background: Molecular Evolution
+
+We generally consider this as a) a mutation occurs, and b) evolutionary forces act on the mutation. Forces are a "fight" between opposing natural selection and genetic drift. If mutation takes over the entire population we call it "fixed," otherwise we call it "segregating." Mutations that go to fixation are termed "substitutions." We sometimes use the term "drifting" to indicate a mutation that selection is not acting on (or acting on so weakly that we can effectively ignore it). 
+
+First, what is a mutation? It is a mistake in copying the DNA. Broadly, there are three kinds of mutations to think about at the molecular level:
+
++ insertion
++ deletion (with above, collectively referred to as "indels")
++ change of nucleotide, which can be distinguished based on consequences.
+  + Missense changes the amino acid. **Nonsynonymous**
+  + Silent does not change the amino acid. **Synonymous**
+  + Nonsense changes to a stop codon. **We generally ignore these over long evolutionary periods.** What allows us to do that? This dude's fitness just tanked. It's not part of the evolutionary trajectory. The dude is probably dead. We're not likely to actually observe that sequence.
+  + Other things that can happen include changes in splicing (this sometimes "looks like" an insertion or deletion)
+
+
+# Background: Interpreting, building, and using phylogenies
+
+
+
 ## Reading and interpreting phylogenies
+
+Include an image of a tree, a link to the tree-thinking, and a link to Kahn academy. 
+
+
+**TODO: Where will we cover evolutionary distance?**
+
+
 
 ## The pipeline of phylogenetic reconstruction
 
+Building trees: This is a complex field that you could get an entire degree in, at least. Over the years there have been many proposed routes:
+1) distance-based. many types here. clustering methods like UPGMA, NJ. Minimum evolution.
+2) parsimony. can be complex with more rules like types of changes are assigned different weights. directional mutations, etc.
+3) model-based reconstruction. **This is where we live.** Introduce probabilities, likelihood, bayesian, concepts of heuristics and treespace.
+
+Introduce back-mutations, parallel, etc here as a partial justification for why we use model-based.
+
 ## Analyzing sequences in a phylogenetic context
 
-# Pre-requisites
+Once we have a tree, we can also use it for further model-based studies. We can ask....
+1) molecular clock analyses?
+2) rate of evolution?
+3) relationship between other traits and tree?
+
+
+## Gene tree vs species trees
+
+They are NOT the same. In this lab we focus on gene trees since we are studying gene evolution.
+
 
 # Mutiple sequence alignments
 
+This is **the data** for performing comparative sequence analysis.
+
+Again, indels and mutations so not only can the DNA change but the LENGTH can change. We want to basically turn our DNA into a character matrix which can show a site-specific "lineage" of DNA changes. We use fancy programs to do this. what comes out? gaps represent putative insertion and deletion events. 
+
+Show an example and show what the alignment should be that comes out of it.
+
+But, these programs use mathematical optimizations which don't really know about evolution. Ongoing challenge since some have tried but it's extremely computationally intensive and TBH we don't have a good sense of how to model indels. So, sometimes, MSAs are wrong,but we have no way of really knowing how. Some people therefore advocate trimming/filtering/masking an alignment to remove unreliable regions (too gappy). The jury remains kind of out on how useful this is. It doesn't seem to hurt, but it also might not help.
+
+
+
 # Evolutionary models
+
+We are in statistics world now which means everything is probabilities. What is the prob of mutation a -> c? c-> t? what about if we consider data at the protein level? prob tryp -> tyro?
+
+Having a set of probabilities for these types of changes over time is our evolutionary model. Specifically, we use a framework called Markov. 
+
+Introduce the word *parameter* as variable. Introduce the word *estimate* as it differs from parameter.
 
 ## Background: Markov models and chains
 
+Weather example of rain/sunshine from bayesian class and show an example of a chain.
+
+Then an example of a chain with DNA.
+
+Memoryless, which lines up nicely with how we think evolution works.
+
+We often use "time-reversible" which means DNA evolution
+
 ## Flavors (DNA, protein, codon) and applications
 
+## Phenomenological vs mechanistic
+
+## Origins: distance stuff from dayhoff and JC69
+
 ## Choosing a model
+This is a broader concept in statistics: How do I choose a model for my data? What variables should I include, aka what level of complexity? We want to find the middle ground in under/overfitting and deal with the precision/bias tradeoff. 
+
+Relative vs absolute.
+Relative says: I have a measure of "goodness-of-fit" and a family of candidate models I could use. We can rank them relative to one another.
+Absolute says: How well does this model recapitulate trends in my data? Also referred to as tests of model adequacy. DOes the model adequately describe my data?
+
+
+Finally the adage "All models are wrong but some are useful" and other useful Boxisms. Remember we are never going to actually model reality. 
+
 
 # Building your phylogeny
 
+Introduce likelihood, bayesian for appeasement purposes.
+
+Caveats for math and computers running in a reasonable amount of time:
++ we consider each site as evolving independently. this is obviously crap.
++ we also consider the process time-reversible. This is very likely to be crap.
+
+# Assessing confidence in phylogenetic inferences
+
+Confidence measures exist *under the assumption* of the model used. Therefore they never represent "is this node right?" They represent "how well is my node supported under this given model of evolution?" It is support, or lack of support, towards each node which itself is a hypothesis under the model.  
+
+## Bootstrap and friends
+
+We'd like more data to assess confidence, but we are stuck with the dataset we have. Booo. We use this concept sampling-with-replacement
+to do a bootstrap, so-called due to phrase "pull yourself up by bootstraps" - assess your confidence with the data you already got. In the MSA context, a given COLUMN is the unit of data for building the tree. So we make X new bootstrapped alignments, and build a tree under the model, and ask: In how many of those X trees is this split present? That is the bootstrap. 100 is common but with fancy schmancy computers 1000 has gotten more common. $\geq70$ considered to be reliable.
+
+There are other similar measures that have been developed over the years and literally are currently being developed.
+
+
+## PP
+
+Unlike ML where a single tree is spit out, bayesian gives you a distribution of trees from which a so-called "posterior probability" of observing that node can be deduced. These range from 0-1. 
+
+They may however be totally borked - a lot of recent research has suggested that PP's are inflated and way too high for spurious nodes and give some false security. 
+
+
 # Measuring evolutionary rates
+
+This is an example of an analysis we can do once we have a tree.
 
 ## Nucleotide and protein relative rates
 
 ## Codon $dN/dS$ 
 
 ## Mutation-selection models
+
+# The Molecular Clock and the Neutral Theory of Molecular Evolution
+
+I immediately regret templating out this section.
 
