@@ -55,7 +55,6 @@ Broadly speaking, there are **three** kinds of mutations to think about at the m
 There is a related vocabulary term to introduce at this time: **S**ingle **N**ucleotide **P**olymorphism, called SNPs ("snips"). Note that evolutionary biologists tend to favor this term, but other fields like medical genomics might called it an "SNV" (pronounced as the letters S-N-V) for single nucleotide **v**arient. A SNP is a type of polymorphism (different individuals in a *population* have different allele versions - nothing is fixed!!) that occurs at a *single* nucleotide. They are very commonly-studied type of variation within populations. From the birds-eye-view of phylogenetics, we generally "ignore" SNPs since we only are considering fixed mutations. (But should we? Unclear! Is it really bad to ignore these? In certain circumstances, maybe!! This is something I'd like to study!) 
 
 
-
 # Background: Interpreting, building, and using phylogenies
 
 
@@ -104,6 +103,53 @@ Because alignments are known to be error-prone, a lot of people (including mysel
 
 
 # Evolutionary models
+
+
+## Background: Why use evolutionary models?
+
+Imagine this simple example of two homologous sequences. This is shown in "FASTA" (pronounced either "fast-uh" or "fast-A"; I tend to say the former but there is no difference.) format: The name of the sequence is prefaced by a greater-than sign `>`, and the subsequent line(s) contain the associated sequence. The next sequence record begins with the next `>`.
+
+```
+>moose
+AGCTATAGAGCTA
+>camel
+AACGATCGAGGTA
+```
+
+
+
+All sequences are the same length (13 nucleotides) and presented as a multiple sequence alignment, so we can directly compare them. Looking column-by-column, there are 4 positions which differ between camel and moose and 9 that are the same. We would therefore say their *percent identity* is $9/13$ (69.2%), and the *percent difference* is $4/13$ (30.77%). We refer to the percent difference as a **P-distance.** We could also say that, considering these two sequences, 4 sites are *variable* and 9 sites are *conserved*.
+
+The problem with P-distance is that it's calculated in a fairly naive manner if you are interested in the **amount of evolutionary change.** P-distance calculations make the assumption that each nucleotide difference is the result of a *single* substitution, and any unobserved differences are present because there were *no substitutions ever* at those sites. However, much like the honey badger, evolution does not care about simplicity. For example, consider position #1 where both species have the nucleotide `A`. The P-distance calculation assumes the most-recent common ancestor (MRCA) of camel and moose *also* had an `A` at this position, and nothing has changed since! This is quite a strong assumption, given evolution's honey badger style. It is entirely possible that there WERE other changes that occured! Maybe the ancestor was a `T` and both camel and moose independently had a substitution to `T`. This would be an example of *convergent molecular evolution.* It is also entirely possible that the MRCA was an `A`, but along the evolutionary lineage to camels, the site substituted to `G`, then to `T`, and then back to `A` - this would be an example of **multiple substitutions** at a single site.
+
+In fact, we are more interested in measures of *evolutionary __divergence__*, which implies the total amount of evolutionary change, rather than simple distance calculations which only are able to consider *observed and present* nucleotide differences. We therefore desire a framework that can accommodate the serious possibility of complex and unobservable evolutionary histories. To do this, we use some fancier statistical models called **Markov models.** When we refer to "evolutionary" or "phylogenetic" models, this is what we mean!! 
+
+## Markov models
+
+Most simply, Markov models (or processes) are comprised of *probabilities (or rates) of instantaneous change among states*....Huh? 
+
+Let's break this down... Working with nucleotides we have *four states*: A, C, G, and T! These are four things a DNA nucleotide can be. When a substitution occurs, nucleotides change into other nucleotides, and there is some *probability* a given nucleotide will change into another. In the simplest model, we would say there is an equal probability of any nucleotide changing to any other - the probability of mutating from `A-->G` is the same as `G-->T` is the same as `T-->A`, and so on. We can write this out as a *matrix* called our **instantaneous rate matrix,** often referred to as the **$Q$ matrix**. Note that we do not consider substitutions to the same state, e.g. `A-->A` is assumed to never happen, since it doesn't make sense, and therefore it has a probability of 0. Below, we use the *parameter* (fancy word for variable) $\lambda$ (Greek letter lambda) to represent the probability of each type of nucleotide substitution:
+
+
+It's not complete yet! There is another aspect to consider: In addition to just the probability of changing from one nucleotide to another, there is some *underlying probability* of BEING a given nucleotide in the first place! The matrix above assumes that all nucleotides are equally likely in a given gene, but this isn't always fair to expect. We therefore also include separate *parameters* for the so-called "base frequencies", also known as "equilibrium" or "stationary" frequencies^[There is actually *quite a bit more* math behind stationary frequencies, what they reall mean, and why we use them. We can discuss this separately if you really want the nitty gritty details, but the details aren't strictly necessary for working with these models in my lab]. We represent these values with the Greek letter pi, $\pi$. 
+
+
+Thus, the probability of a substitution from `A-->T` is the $\lambda$, the probability that a nucleotide changes, *weighted by* the probability $\pi_T$ of observing the *target* nucleotide T in the first place. **This is your very first Markov model!!!** It has five *parameters*:$\lambda$, and the four values for $\pi$, one for each nucleotide^[A true phylogeneticist, however, would note there there are only *four* free parameters (aka parameters you need to understand the whole system): $\lambda$, and only THREE values for $\pi$! Since all the $\pi$'s must sum to 1 (there is a 100% chance of being _any_ nucleotide), you only need to know three of those values to know the fourth. Sneaky!]. 
+
+
+However, this is pretty unrealistic: As biologists, we know that nucleotides aren't all the same - there are purines (A and G) and pyrimidines (C and T). I will use $R$ to mean purine and $Y$ to mean pyrimidine. $R\rightarrow R$ and $Y\rightarrow Y$ mutations are known as *transitions*, and due to shared biochemistry, they occur much more easily than do *transversions* ($R\rightarrow Y$ or $Y\rightarrow R$). We might want our model to reflect this biological information! We can do this by adding another parameter to our model that captures **transition/tranversion bias** - the underlying biological system's preference for transitions over transversions. Commonly we represent this quantity with the Greek letter $\kappa$, kappa.
+
+
+
+
+
+
+
+
+
+
+
+
 
 We are in statistics world now which means everything is probabilities. What is the prob of mutation a -> c? c-> t? what about if we consider data at the protein level? prob tryp -> tyro?
 
