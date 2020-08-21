@@ -142,20 +142,24 @@ In fact, we are more interested in measures of *evolutionary __divergence__*, wh
 
 ## Markov models
 
-Most simply, Markov models (or processes) are comprised of *probabilities (or rates) of instantaneous change among states*....Huh? 
+Most simply, Markov models (or processes) are comprised of *probabilities (or rates) of instantaneous change among states*. A *realization* of a Markov process is called a *Markov chain.* We model nucleotide or protein evolution in this framework: An evolving site of DNA (aka a *column* in a multiple sequence alignment) is considered to be a Markov chain. .....**Huh?** 
 
-Let's break this down... Working with nucleotides we have *four states*: A, C, G, and T! These are four things a DNA nucleotide can be. When a substitution occurs, nucleotides change into other nucleotides, and there is some *probability* a given nucleotide will change into another. In the simplest model, we would say there is an equal probability of any nucleotide changing to any other - the probability of mutating from `A-->G` is the same as `G-->T` is the same as `T-->A`, and so on. We can write this out as a *matrix* called our **instantaneous rate matrix,** often referred to as the **$Q$ matrix**. Note that we do not consider substitutions to the same state, e.g. `A-->A` is assumed to never happen, since it doesn't make sense, and therefore it has a probability of 0. Below, we use the *parameter* (fancy word for variable) $\lambda$ (Greek letter lambda) to represent the probability of each type of nucleotide substitution:
+Let's break this down, one part at a time: What do we mean by *probabilities (or rates) of instantaneous change among states*? Working with nucleotides we have *four states*: A, C, G, and T! These are four things a DNA nucleotide can be. When a substitution occurs, nucleotides change into other nucleotides, and there is some *probability* a given nucleotide will change into another. In the simplest model, we would say there is an equal probability of any nucleotide changing to any other - the probability of mutating from $A\rightarrow G$ is the same as $G\rightarrow T$ is the same as $T\rightarrow A$, and so on. We can write this out as a *matrix* called our **instantaneous rate matrix**, often referred to as the **$Q$ matrix** since it is usually denoted with the letter $Q$. Note that we do not consider substitutions to the same state, e.g. $A\rightarrow A$ is assumed to never happen, since it doesn't make sense, and therefore the probability of this change is 0. Below, we use the *parameter* (fancy word for variable) $\lambda$ (Greek letter lambda) to represent the probability of each type of nucleotide substitution:
+
+
+
 
 
 It's not complete yet! There is another aspect to consider: In addition to just the probability of changing from one nucleotide to another, there is some *underlying probability* of BEING a given nucleotide in the first place! The matrix above assumes that all nucleotides are equally likely in a given gene, but this isn't always fair to expect. We therefore also include separate *parameters* for the so-called "base frequencies", also known as "equilibrium" or "stationary" frequencies^[There is actually *quite a bit more* math behind stationary frequencies, what they reall mean, and why we use them. We can discuss this separately if you really want the nitty gritty details, but the details aren't strictly necessary for working with these models in my lab]. We represent these values with the Greek letter pi, $\pi$. 
 
 
-Thus, the probability of a substitution from `A-->T` is the $\lambda$, the probability that a nucleotide changes, *weighted by* the probability $\pi_T$ of observing the *target* nucleotide T in the first place. **This is your very first Markov model!!!** It has five *parameters*:$\lambda$, and the four values for $\pi$, one for each nucleotide^[A true phylogeneticist, however, would note there there are only *four* free parameters (aka parameters you need to understand the whole system): $\lambda$, and only THREE values for $\pi$! Since all the $\pi$'s must sum to 1 (there is a 100% chance of being _any_ nucleotide), you only need to know three of those values to know the fourth. Sneaky!]. 
+Thus, the probability of a substitution from `A-->T` is the $\lambda$, the probability that a nucleotide changes, *weighted by* the probability $\pi_T$ of observing the *target* nucleotide T in the first place. **This is your very first Markov model!!!** It has five *parameters*:$\lambda$, and the four values for $\pi$, one for each nucleotide^[A true statistical phylogeneticist, however, would note there there are only *four* free parameters (aka parameters you need to understand the whole system): $\lambda$, and only THREE values for $\pi$! Since all the $\pi$'s must sum to 1 (there is a 100% chance of being _any_ nucleotide), you only need to know three of those values to know the fourth. Sneaky!]. 
 
 
 However, this is pretty unrealistic: As biologists, we know that nucleotides aren't all the same - there are purines (A and G) and pyrimidines (C and T). I will use $R$ to mean purine and $Y$ to mean pyrimidine. $R\rightarrow R$ and $Y\rightarrow Y$ mutations are known as *transitions*, and due to shared biochemistry, they occur much more easily than do *transversions* ($R\rightarrow Y$ or $Y\rightarrow R$). We might want our model to reflect this biological information! We can do this by adding another parameter to our model that captures **transition/tranversion bias** - the underlying biological system's preference for transitions over transversions. Commonly we represent this quantity with the Greek letter $\kappa$, kappa.
 
 
+A key property of Markov processes is that they are **memoryless**: The probability of changing from one state to another depends ONLY on the current state, and NOT AT ALL on which states the chain was at previously. Consider this in terms of DNA: Imagine a site in the genome that has undergone substitutions over time as $G \rightarrow A\rightarrow T \rightarrow C \rightarrow A \rightarrow T$. You'll notice that, at two separate times in the DNA's history, it experienced the $A\rightarrow T$ substitution. For the first one, the DNA site had previously been a $G$, but for the second one, the DNA site had been a $C$. The memoryless Markov process doesn't care about the $G$ and the $C$ - the probability of going $A\rightarrow T$ does NOT depend on those previous nucleotides at all. The probability of going $A\rightarrow T$ is always the same probability forever and ever in this chain.
 
 
 
@@ -168,29 +172,23 @@ However, this is pretty unrealistic: As biologists, we know that nucleotides are
 
 
 
-
-
+<!--
 We are in statistics world now which means everything is probabilities. What is the prob of mutation a -> c? c-> t? what about if we consider data at the protein level? prob tryp -> tyro?
 
-Having a set of probabilities for these types of changes over time is our evolutionary model. Specifically, we use a framework called Markov. 
-
 Introduce the word *parameter* as variable. Introduce the word *estimate* as it differs from parameter.
-
-## Background: Markov models and chains
 
 Weather example of rain/sunshine from bayesian class and show an example of a chain.
 
 Then an example of a chain with DNA.
+-->
 
-Memoryless, which lines up nicely with how we think evolution works.
 
-We often use "time-reversible" which means DNA evolution
+
+We often use "time-reversible" models which means probabilities are the same forward and background (ok, that's not what this really means, but you can go look up kolmogorov and detailed balance if you want to go to grad school in this). 
 
 ## Flavors (DNA, protein, codon) and applications
 
 ## Phenomenological vs mechanistic
-
-## Origins: distance stuff from dayhoff and JC69
 
 ## Choosing a model
 This is a broader concept in statistics: How do I choose a model for my data? What variables should I include, aka what level of complexity? We want to find the middle ground in under/overfitting and deal with the precision/bias tradeoff. 
@@ -228,6 +226,7 @@ There are other similar measures that have been developed over the years and lit
 Unlike ML where a single tree is spit out, bayesian gives you a distribution of trees from which a so-called "posterior probability" of observing that node can be deduced. These range from 0-1. 
 
 They may however be totally borked - a lot of recent research has suggested that PP's are inflated and way too high for spurious nodes and give some false security. 
+
 
 
 # Measuring evolutionary rates
