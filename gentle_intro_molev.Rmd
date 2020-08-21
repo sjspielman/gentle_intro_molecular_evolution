@@ -5,7 +5,7 @@ site: bookdown::bookdown_site
 documentclass: book
 output:
   bookdown::gitbook: default
-github-repo: sjspielman/molev_intro
+github-repo: sjspielman/gentle_intro_molecular_evolution
 # Forthcoming.. 
 #bibliography: "bibliography.bib"
 #biblio-style: "apalike"
@@ -17,7 +17,7 @@ github-repo: sjspielman/molev_intro
 
 # Introduction
 
-**A WORK IN PROGRESS.** This document is temporary to organize the book, then will be split up into chapters with an associated `index.Rmd`.
+**A WORK IN PROGRESS.** 
 
 With apologies to Bayesians, analyses is ML-focused. This book is geared towards my students. Read and use at your peril if you are not my student.
 
@@ -29,7 +29,7 @@ This considers only **genic evolution.** Intergenic or non-coding DNA also for s
 
 Molecular evolution is the field of biology that studies how DNA and protein sequences evolve over long time scales, aka *phylogenetic* timescales. You can think of it as "molecular macroevolution" - the evolution of DNA/protein at the level of species. It's "sister field" is Population Genetics ("popgen"), which is concerned with genetic change *within* species and populations. You may remember the "Allele A1" (or evolfoRces in my section!) simulations from "Introduction to Evolution" - this was population genetics. It considers how interacting forces of mutation, selection, migration, random genetic drift, recombination in sexual species, etc. shape the genetics of populations. Molecular evolution is more of a birds-eye-view of these processes. 
 
-### Evolution in populations
+## Evolution in populations
 
 At the level of populations, we generally consider evolution as a process where: a) a random mutation occurs, and b) evolutionary forces act on the mutation. Over generations, one of several things will happen to this mutation:
 
@@ -40,9 +40,9 @@ While this process of either fixation or loss takes places, we would say that th
 
 When we take a phylogenetics or molecular evolution-oriented view of this process, mutations that are lost won't make the cut - we only see mutations that end up fixing, aka **substitutions.** The figure below displays this outlook: On the left, we see a population of 7 dots. This population experiences mutations (red --> blue for example), and some of these mutations fix while others are lost from the population. Zooming out of this process, we arrive at the right-side image. At a broad level, the *entire population* could be described as red -> blue -> orange. Green and purple were just blips on the radar that aren't part of the long-term evolutionary process. 
 
-### Evolution in DNA
+## Evolution in DNA
 
-What is a mutation? It is a *random* (aka, not guided by a "need" for that mutation) mistake made during DNA replication. Those mutations that occur in the *germ line* (gametes: egg and sperm cells) are those that are relevant for evolution, since they can be passed on to the next generation. *Somatic mutations*, mutations which occur in literally any other cell of your body, happen regularly but usually are not a major issue. However, if enough somatic mutations occur in the "right" genes, this leads to cancer. 
+What is a mutation? It is a *random* (aka, not guided by a "need" for that mutation) mistake made during DNA replication. Those mutations that occur in the *germ line* (gametes: egg and sperm cells) are those that are relevant for evolution, since they can be passed on to the next generation. *Somatic mutations*, mutations which occur in literally any other cell of your body, happen regularly but usually are not a major issue. That said, cancer occurs when "enough" somatic mutations occur in genes involved in cell cycle control (cancer is actually an evolutionary process!).
 
 Broadly speaking, there are **three** kinds of mutations to think about at the molecular level. 
 
@@ -52,7 +52,23 @@ Broadly speaking, there are **three** kinds of mutations to think about at the m
   + A *nonsense* mutation creates a premature stop codon, and totally messes up the protein product. **We generally "ignore" nonsense mutations over long evolutionary periods.** What allows us to do this? Most of the time if you introduce a stop codon, the protein isn't going to work, which usually means the individual who has that mutation has *really low fitness* (if even viable in the first place)! They won't have offspring, and they won't therefore be part of the evolutionary trajectory of the population. Therefore, over long time scales, we won't even observe these types of mutations.
 + Extra nucleotides are added during replication. This is called an **insertion** - some DNA is inserted. Similarly, some nucleotides can accidentally get skipped during replication. This is called a **deletion** - some DNA is deleted. Together, we refer to insertions and deletions as **indels** (pronounced like "incels" but with a "d", sorry for the terrible reference point). Of course, when indels occur, there is going to be some kind of change to the final translated protein sequence. 
 
-There is a related vocabulary term to introduce at this time: **S**ingle **N**ucleotide **P**olymorphism, called SNPs ("snips"). Note that evolutionary biologists tend to favor this term, but other fields like medical genomics might called it an "SNV" (pronounced as the letters S-N-V) for single nucleotide **v**arient. A SNP is a type of polymorphism (different individuals in a *population* have different allele versions - nothing is fixed!!) that occurs at a *single* nucleotide. They are very commonly-studied type of variation within populations. From the birds-eye-view of phylogenetics, we generally "ignore" SNPs since we only are considering fixed mutations. (But should we? Unclear! Is it really bad to ignore these? In certain circumstances, maybe!! This is something I'd like to study!) 
+
+### A brief digression: SNPs
+
+There is a related vocabulary term to introduce at this time: **S**ingle **N**ucleotide **P**olymorphism, referred to as SNPs ("snips"). Note that evolutionary biologists tend to favor this term, but other fields like medical genomics might called it an "SNV" (pronounced as the letters S-N-V) for single nucleotide **v**arient. A SNP is a type of polymorphism (different individuals in a *population* have different allele versions - nothing is fixed!!) that occurs at a *single* nucleotide. They are very commonly-studied type of variation within populations. From the birds-eye-view of phylogenetics, we generally "ignore" SNPs since we only are considering fixed mutations. (But should we? Unclear! Is it really bad to ignore these? In certain circumstances, maybe!! This is something I'd like to study!) 
+
+
+## Fitness consequences of mutations
+
+As evolutionary biologists, we also like to think about how mutations affect an organism's *fitness*: Is a given mutation more likely to be a a) **beneficial or advantageous mutation** that increases an organism's fitness ("beneficial"), b) **deleterious mutation** that decreases an organism's fitness, or c) **neutral mutation** that does not effect an organism's fitness^[There are also so-called "nearly-neutral" mutations, which affect fitness but *by such a tiny tiny amount* that we can roughly consider them to be neutral.]. 
+
+There has been a RAGEY debate in biology ongoing since the 1970s about this question. Here is a *brief*^[An entire semester could be taught just on the background of this topic!] glimpse into the origins and camps of this debate: A *very important* biologist named Motoo Kimura introduced a framework called "The Neutral Theory of Molecular Evolution" in the late 1960s. At the time, most biologists assumed that the majority of mutations were *deleterious* - it is much more likely that a typo in DNA replication breaks something rather than helps something. Think of this like a typo: What are the odds your typo leads to a misspelled gibberish word vs a new and interesting vocabulary term? Odds are that you have a misspelling, not a new insight. Kimura, however, reasoned: If most mutations are bad, why is there *so much natural variation* in the world? Why do we see *so many genetic polymorphisms* in populations?^[Of course, we did not have true DNA sequencing in the mid-1900s, but protein gels were pioneered and widely used to get broad-scale glimpses into genetic differences among individuals in populations]. Kimura wondered^[and did _a LOT of math_] whether, in fact, this assumption that most mutations were deleterious was wrong: If mutations are usually bad, it shouldn't be possible to see so much variation in species! Kimura still agreed that most mutations were unlikely to be advantageous, so his conclusion was that most mutations must be **neutral**, aka not influence fitness. Genetic drift would therefore be a dominant evolutionary force over natural selection. 
+
+The jury is "still out" on whether mutations are primarily neutral or deleterious in their effect, but there are very serious and important people on either side of the debate who will assure you that "selectionists have won and the debate is over," or conversely that "neutralists have won and the debate is over." Of course, then, the debate rages on! In the chapter [The Molecular Clock], we'll talk more about the Neutral Theory of Molecular Evolution and how, even though it may or may not be the overall "rule" for how evolution works, it still is useful in many important circumstances.
+
+
+
+
 
 
 # Background: Interpreting, building, and using phylogenies
@@ -118,7 +134,7 @@ AACGATCGAGGTA
 
 
 
-All sequences are the same length (13 nucleotides) and presented as a multiple sequence alignment, so we can directly compare them. Looking column-by-column, there are 4 positions which differ between camel and moose and 9 that are the same. We would therefore say their *percent identity* is $9/13$ (69.2%), and the *percent difference* is $4/13$ (30.77%). We refer to the percent difference as a **P-distance.** We could also say that, considering these two sequences, 4 sites are *variable* and 9 sites are *conserved*.
+All sequences are the same length (13 nucleotides) and presented as a multiple sequence alignment, so we can directly compare them. Looking column-by-column, there are 4 positions which differ between camel and moose and 9 that are the same. We would therefore say their *percent identity* is $9/13$ (69.2%), and the *percent difference* (or *proportion distance*) is $4/13$ (30.77%). We refer to the percent difference as a **P-distance.** We could also say that, considering these two sequences, 4 sites are *variable* and 9 sites are *conserved*.
 
 The problem with P-distance is that it's calculated in a fairly naive manner if you are interested in the **amount of evolutionary change.** P-distance calculations make the assumption that each nucleotide difference is the result of a *single* substitution, and any unobserved differences are present because there were *no substitutions ever* at those sites. However, much like the honey badger, evolution does not care about simplicity. For example, consider position #1 where both species have the nucleotide `A`. The P-distance calculation assumes the most-recent common ancestor (MRCA) of camel and moose *also* had an `A` at this position, and nothing has changed since! This is quite a strong assumption, given evolution's honey badger style. It is entirely possible that there WERE other changes that occured! Maybe the ancestor was a `T` and both camel and moose independently had a substitution to `T`. This would be an example of *convergent molecular evolution.* It is also entirely possible that the MRCA was an `A`, but along the evolutionary lineage to camels, the site substituted to `G`, then to `T`, and then back to `A` - this would be an example of **multiple substitutions** at a single site.
 
@@ -224,7 +240,7 @@ This is an example of an analysis we can do once we have a tree.
 
 ## Mutation-selection models
 
-# The Molecular Clock and the Neutral Theory of Molecular Evolution
+# The Molecular Clock
 
 I immediately regret templating out this section.
 
