@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7 Assessing confidence in phylogenetic inferences | An extra gentle introduction to molecular evolution</title>
+  <meta name="description" content="7 Assessing confidence in phylogenetic inferences | An extra gentle introduction to molecular evolution" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7 Assessing confidence in phylogenetic inferences | An extra gentle introduction to molecular evolution" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="sjspielman/molev_intro" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7 Assessing confidence in phylogenetic inferences | An extra gentle introduction to molecular evolution" />
+  
+  
+  
+
+<meta name="author" content="Stephanie J. Spielman" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="building-your-phylogeny.html"/>
+<link rel="next" href="measuring-evolutionary-rates.html"/>
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="background-molecular-evolution.html"><a href="background-molecular-evolution.html"><i class="fa fa-check"></i><b>2</b> Background: Molecular Evolution</a>
+<ul>
+<li class="chapter" data-level="2.0.1" data-path="background-molecular-evolution.html"><a href="background-molecular-evolution.html#evolution-in-populations"><i class="fa fa-check"></i><b>2.0.1</b> Evolution in populations</a></li>
+<li class="chapter" data-level="2.0.2" data-path="background-molecular-evolution.html"><a href="background-molecular-evolution.html#evolution-in-dna"><i class="fa fa-check"></i><b>2.0.2</b> Evolution in DNA</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="background-interpreting-building-and-using-phylogenies.html"><a href="background-interpreting-building-and-using-phylogenies.html"><i class="fa fa-check"></i><b>3</b> Background: Interpreting, building, and using phylogenies</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="background-interpreting-building-and-using-phylogenies.html"><a href="background-interpreting-building-and-using-phylogenies.html#reading-and-interpreting-phylogenies"><i class="fa fa-check"></i><b>3.1</b> Reading and interpreting phylogenies</a></li>
+<li class="chapter" data-level="3.2" data-path="background-interpreting-building-and-using-phylogenies.html"><a href="background-interpreting-building-and-using-phylogenies.html#the-pipeline-of-phylogenetic-reconstruction"><i class="fa fa-check"></i><b>3.2</b> The pipeline of phylogenetic reconstruction</a></li>
+<li class="chapter" data-level="3.3" data-path="background-interpreting-building-and-using-phylogenies.html"><a href="background-interpreting-building-and-using-phylogenies.html#analyzing-sequences-in-a-phylogenetic-context"><i class="fa fa-check"></i><b>3.3</b> Analyzing sequences in a phylogenetic context</a></li>
+<li class="chapter" data-level="3.4" data-path="background-interpreting-building-and-using-phylogenies.html"><a href="background-interpreting-building-and-using-phylogenies.html#gene-tree-vs-species-trees"><i class="fa fa-check"></i><b>3.4</b> Gene tree vs species trees</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="mutiple-sequence-alignments.html"><a href="mutiple-sequence-alignments.html"><i class="fa fa-check"></i><b>4</b> Mutiple sequence alignments</a></li>
+<li class="chapter" data-level="5" data-path="evolutionary-models.html"><a href="evolutionary-models.html"><i class="fa fa-check"></i><b>5</b> Evolutionary models</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="evolutionary-models.html"><a href="evolutionary-models.html#background-why-use-evolutionary-models"><i class="fa fa-check"></i><b>5.1</b> Background: Why use evolutionary models?</a></li>
+<li class="chapter" data-level="5.2" data-path="evolutionary-models.html"><a href="evolutionary-models.html#markov-models"><i class="fa fa-check"></i><b>5.2</b> Markov models</a></li>
+<li class="chapter" data-level="5.3" data-path="evolutionary-models.html"><a href="evolutionary-models.html#background-markov-models-and-chains"><i class="fa fa-check"></i><b>5.3</b> Background: Markov models and chains</a></li>
+<li class="chapter" data-level="5.4" data-path="evolutionary-models.html"><a href="evolutionary-models.html#flavors-dna-protein-codon-and-applications"><i class="fa fa-check"></i><b>5.4</b> Flavors (DNA, protein, codon) and applications</a></li>
+<li class="chapter" data-level="5.5" data-path="evolutionary-models.html"><a href="evolutionary-models.html#phenomenological-vs-mechanistic"><i class="fa fa-check"></i><b>5.5</b> Phenomenological vs mechanistic</a></li>
+<li class="chapter" data-level="5.6" data-path="evolutionary-models.html"><a href="evolutionary-models.html#origins-distance-stuff-from-dayhoff-and-jc69"><i class="fa fa-check"></i><b>5.6</b> Origins: distance stuff from dayhoff and JC69</a></li>
+<li class="chapter" data-level="5.7" data-path="evolutionary-models.html"><a href="evolutionary-models.html#choosing-a-model"><i class="fa fa-check"></i><b>5.7</b> Choosing a model</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="building-your-phylogeny.html"><a href="building-your-phylogeny.html"><i class="fa fa-check"></i><b>6</b> Building your phylogeny</a></li>
+<li class="chapter" data-level="7" data-path="assessing-confidence-in-phylogenetic-inferences.html"><a href="assessing-confidence-in-phylogenetic-inferences.html"><i class="fa fa-check"></i><b>7</b> Assessing confidence in phylogenetic inferences</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="assessing-confidence-in-phylogenetic-inferences.html"><a href="assessing-confidence-in-phylogenetic-inferences.html#bootstrap-and-friends"><i class="fa fa-check"></i><b>7.1</b> Bootstrap and friends</a></li>
+<li class="chapter" data-level="7.2" data-path="assessing-confidence-in-phylogenetic-inferences.html"><a href="assessing-confidence-in-phylogenetic-inferences.html#pp"><i class="fa fa-check"></i><b>7.2</b> PP</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="measuring-evolutionary-rates.html"><a href="measuring-evolutionary-rates.html"><i class="fa fa-check"></i><b>8</b> Measuring evolutionary rates</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="measuring-evolutionary-rates.html"><a href="measuring-evolutionary-rates.html#nucleotide-and-protein-relative-rates"><i class="fa fa-check"></i><b>8.1</b> Nucleotide and protein relative rates</a></li>
+<li class="chapter" data-level="8.2" data-path="measuring-evolutionary-rates.html"><a href="measuring-evolutionary-rates.html#codon-dnds"><i class="fa fa-check"></i><b>8.2</b> Codon <span class="math inline">\(dN/dS\)</span></a></li>
+<li class="chapter" data-level="8.3" data-path="measuring-evolutionary-rates.html"><a href="measuring-evolutionary-rates.html#mutation-selection-models"><i class="fa fa-check"></i><b>8.3</b> Mutation-selection models</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="the-molecular-clock-and-the-neutral-theory-of-molecular-evolution.html"><a href="the-molecular-clock-and-the-neutral-theory-of-molecular-evolution.html"><i class="fa fa-check"></i><b>9</b> The Molecular Clock and the Neutral Theory of Molecular Evolution</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">An extra gentle introduction to molecular evolution</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="assessing-confidence-in-phylogenetic-inferences" class="section level1" number="7">
+<h1><span class="header-section-number">7</span> Assessing confidence in phylogenetic inferences</h1>
+<p>Confidence measures exist <em>under the assumption</em> of the model used. Therefore they never represent “is this node right?” They represent “how well is my node supported under this given model of evolution?” It is support, or lack of support, towards each node which itself is a hypothesis under the model.</p>
+<div id="bootstrap-and-friends" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Bootstrap and friends</h2>
+<p>We’d like more data to assess confidence, but we are stuck with the dataset we have. Booo. We use this concept sampling-with-replacement
+to do a bootstrap, so-called due to phrase “pull yourself up by bootstraps” - assess your confidence with the data you already got. In the MSA context, a given COLUMN is the unit of data for building the tree. So we make X new bootstrapped alignments, and build a tree under the model, and ask: In how many of those X trees is this split present? That is the bootstrap. 100 is common but with fancy schmancy computers 1000 has gotten more common. <span class="math inline">\(\geq70\)</span> considered to be reliable.</p>
+<p>There are other similar measures that have been developed over the years and literally are currently being developed.</p>
+</div>
+<div id="pp" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> PP</h2>
+<p>Unlike ML where a single tree is spit out, bayesian gives you a distribution of trees from which a so-called “posterior probability” of observing that node can be deduced. These range from 0-1.</p>
+<p>They may however be totally borked - a lot of recent research has suggested that PP’s are inflated and way too high for spurious nodes and give some false security.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="building-your-phylogeny.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="measuring-evolutionary-rates.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

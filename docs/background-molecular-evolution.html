@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Background: Molecular Evolution | An extra gentle introduction to molecular evolution</title>
+  <meta name="description" content="2 Background: Molecular Evolution | An extra gentle introduction to molecular evolution" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Background: Molecular Evolution | An extra gentle introduction to molecular evolution" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="sjspielman/molev_intro" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Background: Molecular Evolution | An extra gentle introduction to molecular evolution" />
+  
+  
+  
+
+<meta name="author" content="Stephanie J. Spielman" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="background-interpreting-building-and-using-phylogenies.html"/>
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="background-molecular-evolution.html"><a href="background-molecular-evolution.html"><i class="fa fa-check"></i><b>2</b> Background: Molecular Evolution</a>
+<ul>
+<li class="chapter" data-level="2.0.1" data-path="background-molecular-evolution.html"><a href="background-molecular-evolution.html#evolution-in-populations"><i class="fa fa-check"></i><b>2.0.1</b> Evolution in populations</a></li>
+<li class="chapter" data-level="2.0.2" data-path="background-molecular-evolution.html"><a href="background-molecular-evolution.html#evolution-in-dna"><i class="fa fa-check"></i><b>2.0.2</b> Evolution in DNA</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="background-interpreting-building-and-using-phylogenies.html"><a href="background-interpreting-building-and-using-phylogenies.html"><i class="fa fa-check"></i><b>3</b> Background: Interpreting, building, and using phylogenies</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="background-interpreting-building-and-using-phylogenies.html"><a href="background-interpreting-building-and-using-phylogenies.html#reading-and-interpreting-phylogenies"><i class="fa fa-check"></i><b>3.1</b> Reading and interpreting phylogenies</a></li>
+<li class="chapter" data-level="3.2" data-path="background-interpreting-building-and-using-phylogenies.html"><a href="background-interpreting-building-and-using-phylogenies.html#the-pipeline-of-phylogenetic-reconstruction"><i class="fa fa-check"></i><b>3.2</b> The pipeline of phylogenetic reconstruction</a></li>
+<li class="chapter" data-level="3.3" data-path="background-interpreting-building-and-using-phylogenies.html"><a href="background-interpreting-building-and-using-phylogenies.html#analyzing-sequences-in-a-phylogenetic-context"><i class="fa fa-check"></i><b>3.3</b> Analyzing sequences in a phylogenetic context</a></li>
+<li class="chapter" data-level="3.4" data-path="background-interpreting-building-and-using-phylogenies.html"><a href="background-interpreting-building-and-using-phylogenies.html#gene-tree-vs-species-trees"><i class="fa fa-check"></i><b>3.4</b> Gene tree vs species trees</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="mutiple-sequence-alignments.html"><a href="mutiple-sequence-alignments.html"><i class="fa fa-check"></i><b>4</b> Mutiple sequence alignments</a></li>
+<li class="chapter" data-level="5" data-path="evolutionary-models.html"><a href="evolutionary-models.html"><i class="fa fa-check"></i><b>5</b> Evolutionary models</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="evolutionary-models.html"><a href="evolutionary-models.html#background-why-use-evolutionary-models"><i class="fa fa-check"></i><b>5.1</b> Background: Why use evolutionary models?</a></li>
+<li class="chapter" data-level="5.2" data-path="evolutionary-models.html"><a href="evolutionary-models.html#markov-models"><i class="fa fa-check"></i><b>5.2</b> Markov models</a></li>
+<li class="chapter" data-level="5.3" data-path="evolutionary-models.html"><a href="evolutionary-models.html#background-markov-models-and-chains"><i class="fa fa-check"></i><b>5.3</b> Background: Markov models and chains</a></li>
+<li class="chapter" data-level="5.4" data-path="evolutionary-models.html"><a href="evolutionary-models.html#flavors-dna-protein-codon-and-applications"><i class="fa fa-check"></i><b>5.4</b> Flavors (DNA, protein, codon) and applications</a></li>
+<li class="chapter" data-level="5.5" data-path="evolutionary-models.html"><a href="evolutionary-models.html#phenomenological-vs-mechanistic"><i class="fa fa-check"></i><b>5.5</b> Phenomenological vs mechanistic</a></li>
+<li class="chapter" data-level="5.6" data-path="evolutionary-models.html"><a href="evolutionary-models.html#origins-distance-stuff-from-dayhoff-and-jc69"><i class="fa fa-check"></i><b>5.6</b> Origins: distance stuff from dayhoff and JC69</a></li>
+<li class="chapter" data-level="5.7" data-path="evolutionary-models.html"><a href="evolutionary-models.html#choosing-a-model"><i class="fa fa-check"></i><b>5.7</b> Choosing a model</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="building-your-phylogeny.html"><a href="building-your-phylogeny.html"><i class="fa fa-check"></i><b>6</b> Building your phylogeny</a></li>
+<li class="chapter" data-level="7" data-path="assessing-confidence-in-phylogenetic-inferences.html"><a href="assessing-confidence-in-phylogenetic-inferences.html"><i class="fa fa-check"></i><b>7</b> Assessing confidence in phylogenetic inferences</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="assessing-confidence-in-phylogenetic-inferences.html"><a href="assessing-confidence-in-phylogenetic-inferences.html#bootstrap-and-friends"><i class="fa fa-check"></i><b>7.1</b> Bootstrap and friends</a></li>
+<li class="chapter" data-level="7.2" data-path="assessing-confidence-in-phylogenetic-inferences.html"><a href="assessing-confidence-in-phylogenetic-inferences.html#pp"><i class="fa fa-check"></i><b>7.2</b> PP</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="measuring-evolutionary-rates.html"><a href="measuring-evolutionary-rates.html"><i class="fa fa-check"></i><b>8</b> Measuring evolutionary rates</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="measuring-evolutionary-rates.html"><a href="measuring-evolutionary-rates.html#nucleotide-and-protein-relative-rates"><i class="fa fa-check"></i><b>8.1</b> Nucleotide and protein relative rates</a></li>
+<li class="chapter" data-level="8.2" data-path="measuring-evolutionary-rates.html"><a href="measuring-evolutionary-rates.html#codon-dnds"><i class="fa fa-check"></i><b>8.2</b> Codon <span class="math inline">\(dN/dS\)</span></a></li>
+<li class="chapter" data-level="8.3" data-path="measuring-evolutionary-rates.html"><a href="measuring-evolutionary-rates.html#mutation-selection-models"><i class="fa fa-check"></i><b>8.3</b> Mutation-selection models</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="the-molecular-clock-and-the-neutral-theory-of-molecular-evolution.html"><a href="the-molecular-clock-and-the-neutral-theory-of-molecular-evolution.html"><i class="fa fa-check"></i><b>9</b> The Molecular Clock and the Neutral Theory of Molecular Evolution</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">An extra gentle introduction to molecular evolution</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="background-molecular-evolution" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Background: Molecular Evolution</h1>
+<p>Molecular evolution is the field of biology that studies how DNA and protein sequences evolve over long time scales, aka <em>phylogenetic</em> timescales. You can think of it as “molecular macroevolution” - the evolution of DNA/protein at the level of species. It’s “sister field” is Population Genetics (“popgen”), which is concerned with genetic change <em>within</em> species and populations. You may remember the “Allele A1” (or evolfoRces in my section!) simulations from “Introduction to Evolution” - this was population genetics. It considers how interacting forces of mutation, selection, migration, random genetic drift, recombination in sexual species, etc. shape the genetics of populations. Molecular evolution is more of a birds-eye-view of these processes.</p>
+<div id="evolution-in-populations" class="section level3" number="2.0.1">
+<h3><span class="header-section-number">2.0.1</span> Evolution in populations</h3>
+<p>At the level of populations, we generally consider evolution as a process where: a) a random mutation occurs, and b) evolutionary forces act on the mutation. Over generations, one of several things will happen to this mutation:</p>
+<ul>
+<li>It will take over the population so that all individuals have it, aka it <em>fixes</em>, or <em>goes to fixation</em> in the population. We refer to fixed mutations as <strong>substitutions.</strong> This can happen either due to strong <strong>positive selection</strong> (selection really favors it!), or genetic drift (even mutations that are <em>beneficial</em> can fix in small populations where drift is strong enough).</li>
+<li>It will be lost from the population and no individuals will have it. From a birds-eye-view, then, it’s as though this mutation never even happened (keep this in mind!!). Mutations can be lost either due to <strong>negative selection</strong> (selection really does not like it), or it can be randomly lost due to genetic drift even if it’s not <em>deleterious</em>.</li>
+</ul>
+<p>While this process of either fixation or loss takes places, we would say that the mutation is <strong>segregating in the population.</strong> This means that some individuals will have it, and others will not (so it’s at some intermediate frequency), representing a <strong>polymorphism.</strong> If natural selection is <em>not</em> acting on the mutation (aka its fitness is “neutral”), or selection is acting <em>so weakly</em> that we can just as easily ignore it, we might describe the mutation as “drifting” through the population. Its frequency fluctuates over generations in the population just by chance. Again, given <em>enough</em> time, though, this mutation will eventually fix or be lost.</p>
+<p>When we take a phylogenetics or molecular evolution-oriented view of this process, mutations that are lost won’t make the cut - we only see mutations that end up fixing, aka <strong>substitutions.</strong> The figure below displays this outlook: On the left, we see a population of 7 dots. This population experiences mutations (red –&gt; blue for example), and some of these mutations fix while others are lost from the population. Zooming out of this process, we arrive at the right-side image. At a broad level, the <em>entire population</em> could be described as red -&gt; blue -&gt; orange. Green and purple were just blips on the radar that aren’t part of the long-term evolutionary process.</p>
+</div>
+<div id="evolution-in-dna" class="section level3" number="2.0.2">
+<h3><span class="header-section-number">2.0.2</span> Evolution in DNA</h3>
+<p>What is a mutation? It is a <em>random</em> (aka, not guided by a “need” for that mutation) mistake made during DNA replication. Those mutations that occur in the <em>germ line</em> (gametes: egg and sperm cells) are those that are relevant for evolution, since they can be passed on to the next generation. <em>Somatic mutations</em>, mutations which occur in literally any other cell of your body, happen regularly but usually are not a major issue. However, if enough somatic mutations occur in the “right” genes, this leads to cancer.</p>
+<p>Broadly speaking, there are <strong>three</strong> kinds of mutations to think about at the molecular level.</p>
+<ul>
+<li>The wrong nucleotide is used during DNA replication, which ultimately changes the nucleotide. If this mutation fixes (and that’s all we care about!), we call it a <strong>substitution.</strong> Therefore, in phylogenetics, we actually refer to nucleotide changes as a whole as <strong>substitutions.</strong> Due to redundancy in the genetic code (there are multiple codons for most amino acids), there are several different consequences when a nucleotide is changed within a <em>protein-coding region</em> (aka exons, not introns) of the genome:
+<ul>
+<li>A <em>missense</em> mutation also affects the translated protein product - the nucleotide mutation causes a change in the amino acid sequence. In evolutionary biology, <strong>we call this a nonsynonymous mutation</strong>.</li>
+<li>A <em>silent</em> mutation does not affect the translated protein product. <strong>We call this a synonymous mutation</strong>.</li>
+<li>A <em>nonsense</em> mutation creates a premature stop codon, and totally messes up the protein product. <strong>We generally “ignore” nonsense mutations over long evolutionary periods.</strong> What allows us to do this? Most of the time if you introduce a stop codon, the protein isn’t going to work, which usually means the individual who has that mutation has <em>really low fitness</em> (if even viable in the first place)! They won’t have offspring, and they won’t therefore be part of the evolutionary trajectory of the population. Therefore, over long time scales, we won’t even observe these types of mutations.</li>
+</ul></li>
+<li>Extra nucleotides are added during replication. This is called an <strong>insertion</strong> - some DNA is inserted. Similarly, some nucleotides can accidentally get skipped during replication. This is called a <strong>deletion</strong> - some DNA is deleted. Together, we refer to insertions and deletions as <strong>indels</strong> (pronounced like “incels” but with a “d”, sorry for the terrible reference point). Of course, when indels occur, there is going to be some kind of change to the final translated protein sequence.</li>
+</ul>
+<p>There is a related vocabulary term to introduce at this time: <strong>S</strong>ingle <strong>N</strong>ucleotide <strong>P</strong>olymorphism, called SNPs (“snips”). Note that evolutionary biologists tend to favor this term, but other fields like medical genomics might called it an “SNV” (pronounced as the letters S-N-V) for single nucleotide <strong>v</strong>arient. A SNP is a type of polymorphism (different individuals in a <em>population</em> have different allele versions - nothing is fixed!!) that occurs at a <em>single</em> nucleotide. They are very commonly-studied type of variation within populations. From the birds-eye-view of phylogenetics, we generally “ignore” SNPs since we only are considering fixed mutations. (But should we? Unclear! Is it really bad to ignore these? In certain circumstances, maybe!! This is something I’d like to study!)</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="background-interpreting-building-and-using-phylogenies.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

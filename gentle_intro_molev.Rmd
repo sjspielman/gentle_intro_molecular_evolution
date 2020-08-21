@@ -151,6 +151,9 @@ However, this is pretty unrealistic: As biologists, we know that nucleotides are
 
 
 
+
+
+
 We are in statistics world now which means everything is probabilities. What is the prob of mutation a -> c? c-> t? what about if we consider data at the protein level? prob tryp -> tyro?
 
 Having a set of probabilities for these types of changes over time is our evolutionary model. Specifically, we use a framework called Markov. 

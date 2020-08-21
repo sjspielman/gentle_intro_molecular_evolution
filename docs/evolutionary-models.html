@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 Evolutionary models | An extra gentle introduction to molecular evolution</title>
+  <meta name="description" content="5 Evolutionary models | An extra gentle introduction to molecular evolution" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 Evolutionary models | An extra gentle introduction to molecular evolution" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="sjspielman/molev_intro" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 Evolutionary models | An extra gentle introduction to molecular evolution" />
+  
+  
+  
+
+<meta name="author" content="Stephanie J. Spielman" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="mutiple-sequence-alignments.html"/>
+<link rel="next" href="building-your-phylogeny.html"/>
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="background-molecular-evolution.html"><a href="background-molecular-evolution.html"><i class="fa fa-check"></i><b>2</b> Background: Molecular Evolution</a>
+<ul>
+<li class="chapter" data-level="2.0.1" data-path="background-molecular-evolution.html"><a href="background-molecular-evolution.html#evolution-in-populations"><i class="fa fa-check"></i><b>2.0.1</b> Evolution in populations</a></li>
+<li class="chapter" data-level="2.0.2" data-path="background-molecular-evolution.html"><a href="background-molecular-evolution.html#evolution-in-dna"><i class="fa fa-check"></i><b>2.0.2</b> Evolution in DNA</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="background-interpreting-building-and-using-phylogenies.html"><a href="background-interpreting-building-and-using-phylogenies.html"><i class="fa fa-check"></i><b>3</b> Background: Interpreting, building, and using phylogenies</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="background-interpreting-building-and-using-phylogenies.html"><a href="background-interpreting-building-and-using-phylogenies.html#reading-and-interpreting-phylogenies"><i class="fa fa-check"></i><b>3.1</b> Reading and interpreting phylogenies</a></li>
+<li class="chapter" data-level="3.2" data-path="background-interpreting-building-and-using-phylogenies.html"><a href="background-interpreting-building-and-using-phylogenies.html#the-pipeline-of-phylogenetic-reconstruction"><i class="fa fa-check"></i><b>3.2</b> The pipeline of phylogenetic reconstruction</a></li>
+<li class="chapter" data-level="3.3" data-path="background-interpreting-building-and-using-phylogenies.html"><a href="background-interpreting-building-and-using-phylogenies.html#analyzing-sequences-in-a-phylogenetic-context"><i class="fa fa-check"></i><b>3.3</b> Analyzing sequences in a phylogenetic context</a></li>
+<li class="chapter" data-level="3.4" data-path="background-interpreting-building-and-using-phylogenies.html"><a href="background-interpreting-building-and-using-phylogenies.html#gene-tree-vs-species-trees"><i class="fa fa-check"></i><b>3.4</b> Gene tree vs species trees</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="mutiple-sequence-alignments.html"><a href="mutiple-sequence-alignments.html"><i class="fa fa-check"></i><b>4</b> Mutiple sequence alignments</a></li>
+<li class="chapter" data-level="5" data-path="evolutionary-models.html"><a href="evolutionary-models.html"><i class="fa fa-check"></i><b>5</b> Evolutionary models</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="evolutionary-models.html"><a href="evolutionary-models.html#background-why-use-evolutionary-models"><i class="fa fa-check"></i><b>5.1</b> Background: Why use evolutionary models?</a></li>
+<li class="chapter" data-level="5.2" data-path="evolutionary-models.html"><a href="evolutionary-models.html#markov-models"><i class="fa fa-check"></i><b>5.2</b> Markov models</a></li>
+<li class="chapter" data-level="5.3" data-path="evolutionary-models.html"><a href="evolutionary-models.html#background-markov-models-and-chains"><i class="fa fa-check"></i><b>5.3</b> Background: Markov models and chains</a></li>
+<li class="chapter" data-level="5.4" data-path="evolutionary-models.html"><a href="evolutionary-models.html#flavors-dna-protein-codon-and-applications"><i class="fa fa-check"></i><b>5.4</b> Flavors (DNA, protein, codon) and applications</a></li>
+<li class="chapter" data-level="5.5" data-path="evolutionary-models.html"><a href="evolutionary-models.html#phenomenological-vs-mechanistic"><i class="fa fa-check"></i><b>5.5</b> Phenomenological vs mechanistic</a></li>
+<li class="chapter" data-level="5.6" data-path="evolutionary-models.html"><a href="evolutionary-models.html#origins-distance-stuff-from-dayhoff-and-jc69"><i class="fa fa-check"></i><b>5.6</b> Origins: distance stuff from dayhoff and JC69</a></li>
+<li class="chapter" data-level="5.7" data-path="evolutionary-models.html"><a href="evolutionary-models.html#choosing-a-model"><i class="fa fa-check"></i><b>5.7</b> Choosing a model</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="building-your-phylogeny.html"><a href="building-your-phylogeny.html"><i class="fa fa-check"></i><b>6</b> Building your phylogeny</a></li>
+<li class="chapter" data-level="7" data-path="assessing-confidence-in-phylogenetic-inferences.html"><a href="assessing-confidence-in-phylogenetic-inferences.html"><i class="fa fa-check"></i><b>7</b> Assessing confidence in phylogenetic inferences</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="assessing-confidence-in-phylogenetic-inferences.html"><a href="assessing-confidence-in-phylogenetic-inferences.html#bootstrap-and-friends"><i class="fa fa-check"></i><b>7.1</b> Bootstrap and friends</a></li>
+<li class="chapter" data-level="7.2" data-path="assessing-confidence-in-phylogenetic-inferences.html"><a href="assessing-confidence-in-phylogenetic-inferences.html#pp"><i class="fa fa-check"></i><b>7.2</b> PP</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="measuring-evolutionary-rates.html"><a href="measuring-evolutionary-rates.html"><i class="fa fa-check"></i><b>8</b> Measuring evolutionary rates</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="measuring-evolutionary-rates.html"><a href="measuring-evolutionary-rates.html#nucleotide-and-protein-relative-rates"><i class="fa fa-check"></i><b>8.1</b> Nucleotide and protein relative rates</a></li>
+<li class="chapter" data-level="8.2" data-path="measuring-evolutionary-rates.html"><a href="measuring-evolutionary-rates.html#codon-dnds"><i class="fa fa-check"></i><b>8.2</b> Codon <span class="math inline">\(dN/dS\)</span></a></li>
+<li class="chapter" data-level="8.3" data-path="measuring-evolutionary-rates.html"><a href="measuring-evolutionary-rates.html#mutation-selection-models"><i class="fa fa-check"></i><b>8.3</b> Mutation-selection models</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="the-molecular-clock-and-the-neutral-theory-of-molecular-evolution.html"><a href="the-molecular-clock-and-the-neutral-theory-of-molecular-evolution.html"><i class="fa fa-check"></i><b>9</b> The Molecular Clock and the Neutral Theory of Molecular Evolution</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">An extra gentle introduction to molecular evolution</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="evolutionary-models" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Evolutionary models</h1>
+<div id="background-why-use-evolutionary-models" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Background: Why use evolutionary models?</h2>
+<p>Imagine this simple example of two homologous sequences. This is shown in “FASTA” (pronounced either “fast-uh” or “fast-A”; I tend to say the former but there is no difference.) format: The name of the sequence is prefaced by a greater-than sign <code>&gt;</code>, and the subsequent line(s) contain the associated sequence. The next sequence record begins with the next <code>&gt;</code>.</p>
+<pre><code>&gt;moose
+AGCTATAGAGCTA
+&gt;camel
+AACGATCGAGGTA</code></pre>
+<p>All sequences are the same length (13 nucleotides) and presented as a multiple sequence alignment, so we can directly compare them. Looking column-by-column, there are 4 positions which differ between camel and moose and 9 that are the same. We would therefore say their <em>percent identity</em> is <span class="math inline">\(9/13\)</span> (69.2%), and the <em>percent difference</em> is <span class="math inline">\(4/13\)</span> (30.77%). We refer to the percent difference as a <strong>P-distance.</strong> We could also say that, considering these two sequences, 4 sites are <em>variable</em> and 9 sites are <em>conserved</em>.</p>
+<p>The problem with P-distance is that it’s calculated in a fairly naive manner if you are interested in the <strong>amount of evolutionary change.</strong> P-distance calculations make the assumption that each nucleotide difference is the result of a <em>single</em> substitution, and any unobserved differences are present because there were <em>no substitutions ever</em> at those sites. However, much like the honey badger, evolution does not care about simplicity. For example, consider position #1 where both species have the nucleotide <code>A</code>. The P-distance calculation assumes the most-recent common ancestor (MRCA) of camel and moose <em>also</em> had an <code>A</code> at this position, and nothing has changed since! This is quite a strong assumption, given evolution’s honey badger style. It is entirely possible that there WERE other changes that occured! Maybe the ancestor was a <code>T</code> and both camel and moose independently had a substitution to <code>T</code>. This would be an example of <em>convergent molecular evolution.</em> It is also entirely possible that the MRCA was an <code>A</code>, but along the evolutionary lineage to camels, the site substituted to <code>G</code>, then to <code>T</code>, and then back to <code>A</code> - this would be an example of <strong>multiple substitutions</strong> at a single site.</p>
+<p>In fact, we are more interested in measures of <em>evolutionary <strong>divergence</strong></em>, which implies the total amount of evolutionary change, rather than simple distance calculations which only are able to consider <em>observed and present</em> nucleotide differences. We therefore desire a framework that can accommodate the serious possibility of complex and unobservable evolutionary histories. To do this, we use some fancier statistical models called <strong>Markov models.</strong> When we refer to “evolutionary” or “phylogenetic” models, this is what we mean!!</p>
+</div>
+<div id="markov-models" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Markov models</h2>
+<p>Most simply, Markov models (or processes) are comprised of <em>probabilities (or rates) of instantaneous change among states</em>….Huh?</p>
+<p>Let’s break this down… Working with nucleotides we have <em>four states</em>: A, C, G, and T! These are four things a DNA nucleotide can be. When a substitution occurs, nucleotides change into other nucleotides, and there is some <em>probability</em> a given nucleotide will change into another. In the simplest model, we would say there is an equal probability of any nucleotide changing to any other - the probability of mutating from <code>A--&gt;G</code> is the same as <code>G--&gt;T</code> is the same as <code>T--&gt;A</code>, and so on. We can write this out as a <em>matrix</em> called our <strong>instantaneous rate matrix,</strong> often referred to as the <strong><span class="math inline">\(Q\)</span> matrix</strong>. Note that we do not consider substitutions to the same state, e.g. <code>A--&gt;A</code> is assumed to never happen, since it doesn’t make sense, and therefore it has a probability of 0. Below, we use the <em>parameter</em> (fancy word for variable) <span class="math inline">\(\lambda\)</span> (Greek letter lambda) to represent the probability of each type of nucleotide substitution:</p>
+<p>It’s not complete yet! There is another aspect to consider: In addition to just the probability of changing from one nucleotide to another, there is some <em>underlying probability</em> of BEING a given nucleotide in the first place! The matrix above assumes that all nucleotides are equally likely in a given gene, but this isn’t always fair to expect. We therefore also include separate <em>parameters</em> for the so-called “base frequencies”, also known as “equilibrium” or “stationary” frequencies<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>. We represent these values with the Greek letter pi, <span class="math inline">\(\pi\)</span>.</p>
+<p>Thus, the probability of a substitution from <code>A--&gt;T</code> is the <span class="math inline">\(\lambda\)</span>, the probability that a nucleotide changes, <em>weighted by</em> the probability <span class="math inline">\(\pi_T\)</span> of observing the <em>target</em> nucleotide T in the first place. <strong>This is your very first Markov model!!!</strong> It has five <em>parameters</em>:<span class="math inline">\(\lambda\)</span>, and the four values for <span class="math inline">\(\pi\)</span>, one for each nucleotide<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</p>
+<p>However, this is pretty unrealistic: As biologists, we know that nucleotides aren’t all the same - there are purines (A and G) and pyrimidines (C and T). I will use <span class="math inline">\(R\)</span> to mean purine and <span class="math inline">\(Y\)</span> to mean pyrimidine. <span class="math inline">\(R\rightarrow R\)</span> and <span class="math inline">\(Y\rightarrow Y\)</span> mutations are known as <em>transitions</em>, and due to shared biochemistry, they occur much more easily than do <em>transversions</em> (<span class="math inline">\(R\rightarrow Y\)</span> or <span class="math inline">\(Y\rightarrow R\)</span>). We might want our model to reflect this biological information! We can do this by adding another parameter to our model that captures <strong>transition/tranversion bias</strong> - the underlying biological system’s preference for transitions over transversions. Commonly we represent this quantity with the Greek letter <span class="math inline">\(\kappa\)</span>, kappa.</p>
+<p>We are in statistics world now which means everything is probabilities. What is the prob of mutation a -&gt; c? c-&gt; t? what about if we consider data at the protein level? prob tryp -&gt; tyro?</p>
+<p>Having a set of probabilities for these types of changes over time is our evolutionary model. Specifically, we use a framework called Markov.</p>
+<p>Introduce the word <em>parameter</em> as variable. Introduce the word <em>estimate</em> as it differs from parameter.</p>
+</div>
+<div id="background-markov-models-and-chains" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Background: Markov models and chains</h2>
+<p>Weather example of rain/sunshine from bayesian class and show an example of a chain.</p>
+<p>Then an example of a chain with DNA.</p>
+<p>Memoryless, which lines up nicely with how we think evolution works.</p>
+<p>We often use “time-reversible” which means DNA evolution</p>
+</div>
+<div id="flavors-dna-protein-codon-and-applications" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Flavors (DNA, protein, codon) and applications</h2>
+</div>
+<div id="phenomenological-vs-mechanistic" class="section level2" number="5.5">
+<h2><span class="header-section-number">5.5</span> Phenomenological vs mechanistic</h2>
+</div>
+<div id="origins-distance-stuff-from-dayhoff-and-jc69" class="section level2" number="5.6">
+<h2><span class="header-section-number">5.6</span> Origins: distance stuff from dayhoff and JC69</h2>
+</div>
+<div id="choosing-a-model" class="section level2" number="5.7">
+<h2><span class="header-section-number">5.7</span> Choosing a model</h2>
+<p>This is a broader concept in statistics: How do I choose a model for my data? What variables should I include, aka what level of complexity? We want to find the middle ground in under/overfitting and deal with the precision/bias tradeoff.</p>
+<p>Relative vs absolute.
+Relative says: I have a measure of “goodness-of-fit” and a family of candidate models I could use. We can rank them relative to one another.
+Absolute says: How well does this model recapitulate trends in my data? Also referred to as tests of model adequacy. DOes the model adequately describe my data?</p>
+<p>Finally the adage “All models are wrong but some are useful” and other useful Boxisms. Remember we are never going to actually model reality.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="3">
+<li id="fn3"><p>There is actually <em>quite a bit more</em> math behind stationary frequencies, what they reall mean, and why we use them. We can discuss this separately if you really want the nitty gritty details, but the details aren’t strictly necessary for working with these models in my lab<a href="evolutionary-models.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>A true phylogeneticist, however, would note there there are only <em>four</em> free parameters (aka parameters you need to understand the whole system): <span class="math inline">\(\lambda\)</span>, and only THREE values for <span class="math inline">\(\pi\)</span>! Since all the <span class="math inline">\(\pi\)</span>’s must sum to 1 (there is a 100% chance of being <em>any</em> nucleotide), you only need to know three of those values to know the fourth. Sneaky!<a href="evolutionary-models.html#fnref4" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="mutiple-sequence-alignments.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="building-your-phylogeny.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
