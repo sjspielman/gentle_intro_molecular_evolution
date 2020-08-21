@@ -13,7 +13,7 @@
   
   
   
-  <meta name="github-repo" content="sjspielman/molev_intro" />
+  <meta name="github-repo" content="sjspielman/gentle_intro_molecular_evolution" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="4 Mutiple sequence alignments | An extra gentle introduction to molecular evolution" />
@@ -65,11 +65,15 @@
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="background-molecular-evolution.html"><a href="background-molecular-evolution.html"><i class="fa fa-check"></i><b>2</b> Background: Molecular Evolution</a>
 <ul>
-<li class="chapter" data-level="2.0.1" data-path="background-molecular-evolution.html"><a href="background-molecular-evolution.html#evolution-in-populations"><i class="fa fa-check"></i><b>2.0.1</b> Evolution in populations</a></li>
-<li class="chapter" data-level="2.0.2" data-path="background-molecular-evolution.html"><a href="background-molecular-evolution.html#evolution-in-dna"><i class="fa fa-check"></i><b>2.0.2</b> Evolution in DNA</a></li>
+<li class="chapter" data-level="2.1" data-path="background-molecular-evolution.html"><a href="background-molecular-evolution.html#evolution-in-populations"><i class="fa fa-check"></i><b>2.1</b> Evolution in populations</a></li>
+<li class="chapter" data-level="2.2" data-path="background-molecular-evolution.html"><a href="background-molecular-evolution.html#evolution-in-dna"><i class="fa fa-check"></i><b>2.2</b> Evolution in DNA</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="background-molecular-evolution.html"><a href="background-molecular-evolution.html#a-brief-digression-snps"><i class="fa fa-check"></i><b>2.2.1</b> A brief digression: SNPs</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="background-molecular-evolution.html"><a href="background-molecular-evolution.html#fitness-consequences-of-mutations"><i class="fa fa-check"></i><b>2.3</b> Fitness consequences of mutations</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="background-interpreting-building-and-using-phylogenies.html"><a href="background-interpreting-building-and-using-phylogenies.html"><i class="fa fa-check"></i><b>3</b> Background: Interpreting, building, and using phylogenies</a>
 <ul>
@@ -101,7 +105,7 @@
 <li class="chapter" data-level="8.2" data-path="measuring-evolutionary-rates.html"><a href="measuring-evolutionary-rates.html#codon-dnds"><i class="fa fa-check"></i><b>8.2</b> Codon <span class="math inline">\(dN/dS\)</span></a></li>
 <li class="chapter" data-level="8.3" data-path="measuring-evolutionary-rates.html"><a href="measuring-evolutionary-rates.html#mutation-selection-models"><i class="fa fa-check"></i><b>8.3</b> Mutation-selection models</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="the-molecular-clock-and-the-neutral-theory-of-molecular-evolution.html"><a href="the-molecular-clock-and-the-neutral-theory-of-molecular-evolution.html"><i class="fa fa-check"></i><b>9</b> The Molecular Clock and the Neutral Theory of Molecular Evolution</a></li>
+<li class="chapter" data-level="9" data-path="the-molecular-clock.html"><a href="the-molecular-clock.html"><i class="fa fa-check"></i><b>9</b> The Molecular Clock</a></li>
 </ul>
 
       </nav>
@@ -121,16 +125,16 @@
             <section class="normal" id="section-">
 <div id="mutiple-sequence-alignments" class="section level1" number="4">
 <h1><span class="header-section-number">4</span> Mutiple sequence alignments</h1>
-<p>Recall from the earlier section <a href="background-molecular-evolution.html#evolution-in-dna">Evolution in DNA</a>, that DNA mutations fall into two broad categories: a) substitutions (change in existing nucleotide(s)), and b) indels (nucleotides are inserted or deleted). In order to compare homologous sequences to one another, however, we need to line them up so they match. However, because of indels, two homologs are not necessarily going to have the same number of nucleotides. Some sequences will be shorter or longer, and sometimes <em>by a lot</em>.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
-<p>We therefore need to create something called a <em>sequence alignment</em> (a “character matrix,” which you may recall from “Introduction to Evolution”, but for DNA and protein sequences instead of physical traits). When you align two sequences together, it’s called a “pairwise alignment.” When there are three or more sequences (pretty much all modern-day evolutionary studies), it’s called a <strong>multiple sequence alignment</strong>, often abbreviated as “MSA” and simply referred to as “alignments”<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> There are many different software programs which will align your homologous sequences. In the end, sequences will have both nucleotides (or amino acids, depending on your dataset), and <strong>gaps</strong>, represented as dashes (“-”), which represent indel events. Each <strong>site</strong> is a <strong>column</strong> in the alignment.</p>
+<p>Recall from the earlier section <a href="background-molecular-evolution.html#evolution-in-dna">Evolution in DNA</a>, that DNA mutations fall into two broad categories: a) substitutions (change in existing nucleotide(s)), and b) indels (nucleotides are inserted or deleted). In order to compare homologous sequences to one another, however, we need to line them up so they match. However, because of indels, two homologs are not necessarily going to have the same number of nucleotides. Some sequences will be shorter or longer, and sometimes <em>by a lot</em>.<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>.</p>
+<p>We therefore need to create something called a <em>sequence alignment</em> (a “character matrix,” which you may recall from “Introduction to Evolution”, but for DNA and protein sequences instead of physical traits). When you align two sequences together, it’s called a “pairwise alignment.” When there are three or more sequences (pretty much all modern-day evolutionary studies), it’s called a <strong>multiple sequence alignment</strong>, often abbreviated as “MSA” and simply referred to as “alignments”<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a> There are many different software programs which will align your homologous sequences. In the end, sequences will have both nucleotides (or amino acids, depending on your dataset), and <strong>gaps</strong>, represented as dashes (“-”), which represent indel events. Each <strong>site</strong> is a <strong>column</strong> in the alignment.</p>
 <p><strong>MSAs are <em>hard</em> to make. Really, really hard.</strong> So hard in fact, that we are pretty sure that even the fanciest most computer-y algorithms for building MSAs are error prone. The problem is, the software doesn’t know about the evolutionary process itself and instead relies on mathematical optimization to get the “right” alignment. As a consequence, we are pretty sure a lot of alignments are wrong, but we also don’t know <em>in what way</em> they are wrong. To make matters worse, MSAs are <strong>THE</strong> fundamental unit of data used in <em>all comparative sequence analyses and phylogenetics.</em></p>
 <p>Because alignments are known to be error-prone, a lot of people (including myself) have tried think about ways we can quantify this uncertainty, or at least identify unreliable regions in a given MSA. Some people advocate for strategies like <em>trimming</em> or <em>filtering</em> alignments, where you remove parts of the alignment you infer to be problematic. Usually, these are regions that are really “gappy” (yes, we really use this word!). Indels are what makes aligning so tricky - indeed, if there were no indels and only substitutions, all homologous sequences would already be the same length and directly line up into columns in the first place. There has been conflicting evidence over the years whether filtering improves or worsens analysis outcomes. It doesn’t seem to hurt, but it also doesn’t seem to help very much.</p>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="1">
-<li id="fn1"><p>What’s <em>really</em> interesting though is that even though protein sequences and lengths change over evolutionary time, their overall <em>structure</em> really does not. Natural selection imposes strong constraints on protein evolution to maintain a particular structure, which in turn allows the protein to properly function<a href="mutiple-sequence-alignments.html#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>CAUTION: There is another type of “alignment” in bioinformatics that is used for genome sequencing. The type of alignment we are concerned with is those that compare <em>homologous sequences from DIFFERENT individuals/species</em>.<a href="mutiple-sequence-alignments.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<ol start="5">
+<li id="fn5"><p>What’s <em>really</em> interesting though is that even though protein sequences and lengths change over evolutionary time, their overall <em>structure</em> really does not. Natural selection imposes strong constraints on protein evolution to maintain a particular structure, which in turn allows the protein to properly function<a href="mutiple-sequence-alignments.html#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p>CAUTION: There is another type of “alignment” in bioinformatics that is used for genome sequencing. The type of alignment we are concerned with is those that compare <em>homologous sequences from DIFFERENT individuals/species</em>.<a href="mutiple-sequence-alignments.html#fnref6" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

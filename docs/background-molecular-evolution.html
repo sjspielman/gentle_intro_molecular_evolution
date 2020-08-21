@@ -13,7 +13,7 @@
   
   
   
-  <meta name="github-repo" content="sjspielman/molev_intro" />
+  <meta name="github-repo" content="sjspielman/gentle_intro_molecular_evolution" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="2 Background: Molecular Evolution | An extra gentle introduction to molecular evolution" />
@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
+<link rel="prev" href="introduction.html"/>
 <link rel="next" href="background-interpreting-building-and-using-phylogenies.html"/>
 <script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -65,11 +65,15 @@
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="background-molecular-evolution.html"><a href="background-molecular-evolution.html"><i class="fa fa-check"></i><b>2</b> Background: Molecular Evolution</a>
 <ul>
-<li class="chapter" data-level="2.0.1" data-path="background-molecular-evolution.html"><a href="background-molecular-evolution.html#evolution-in-populations"><i class="fa fa-check"></i><b>2.0.1</b> Evolution in populations</a></li>
-<li class="chapter" data-level="2.0.2" data-path="background-molecular-evolution.html"><a href="background-molecular-evolution.html#evolution-in-dna"><i class="fa fa-check"></i><b>2.0.2</b> Evolution in DNA</a></li>
+<li class="chapter" data-level="2.1" data-path="background-molecular-evolution.html"><a href="background-molecular-evolution.html#evolution-in-populations"><i class="fa fa-check"></i><b>2.1</b> Evolution in populations</a></li>
+<li class="chapter" data-level="2.2" data-path="background-molecular-evolution.html"><a href="background-molecular-evolution.html#evolution-in-dna"><i class="fa fa-check"></i><b>2.2</b> Evolution in DNA</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="background-molecular-evolution.html"><a href="background-molecular-evolution.html#a-brief-digression-snps"><i class="fa fa-check"></i><b>2.2.1</b> A brief digression: SNPs</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="background-molecular-evolution.html"><a href="background-molecular-evolution.html#fitness-consequences-of-mutations"><i class="fa fa-check"></i><b>2.3</b> Fitness consequences of mutations</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="background-interpreting-building-and-using-phylogenies.html"><a href="background-interpreting-building-and-using-phylogenies.html"><i class="fa fa-check"></i><b>3</b> Background: Interpreting, building, and using phylogenies</a>
 <ul>
@@ -101,7 +105,7 @@
 <li class="chapter" data-level="8.2" data-path="measuring-evolutionary-rates.html"><a href="measuring-evolutionary-rates.html#codon-dnds"><i class="fa fa-check"></i><b>8.2</b> Codon <span class="math inline">\(dN/dS\)</span></a></li>
 <li class="chapter" data-level="8.3" data-path="measuring-evolutionary-rates.html"><a href="measuring-evolutionary-rates.html#mutation-selection-models"><i class="fa fa-check"></i><b>8.3</b> Mutation-selection models</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="the-molecular-clock-and-the-neutral-theory-of-molecular-evolution.html"><a href="the-molecular-clock-and-the-neutral-theory-of-molecular-evolution.html"><i class="fa fa-check"></i><b>9</b> The Molecular Clock and the Neutral Theory of Molecular Evolution</a></li>
+<li class="chapter" data-level="9" data-path="the-molecular-clock.html"><a href="the-molecular-clock.html"><i class="fa fa-check"></i><b>9</b> The Molecular Clock</a></li>
 </ul>
 
       </nav>
@@ -122,8 +126,8 @@
 <div id="background-molecular-evolution" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Background: Molecular Evolution</h1>
 <p>Molecular evolution is the field of biology that studies how DNA and protein sequences evolve over long time scales, aka <em>phylogenetic</em> timescales. You can think of it as “molecular macroevolution” - the evolution of DNA/protein at the level of species. It’s “sister field” is Population Genetics (“popgen”), which is concerned with genetic change <em>within</em> species and populations. You may remember the “Allele A1” (or evolfoRces in my section!) simulations from “Introduction to Evolution” - this was population genetics. It considers how interacting forces of mutation, selection, migration, random genetic drift, recombination in sexual species, etc. shape the genetics of populations. Molecular evolution is more of a birds-eye-view of these processes.</p>
-<div id="evolution-in-populations" class="section level3" number="2.0.1">
-<h3><span class="header-section-number">2.0.1</span> Evolution in populations</h3>
+<div id="evolution-in-populations" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Evolution in populations</h2>
 <p>At the level of populations, we generally consider evolution as a process where: a) a random mutation occurs, and b) evolutionary forces act on the mutation. Over generations, one of several things will happen to this mutation:</p>
 <ul>
 <li>It will take over the population so that all individuals have it, aka it <em>fixes</em>, or <em>goes to fixation</em> in the population. We refer to fixed mutations as <strong>substitutions.</strong> This can happen either due to strong <strong>positive selection</strong> (selection really favors it!), or genetic drift (even mutations that are <em>beneficial</em> can fix in small populations where drift is strong enough).</li>
@@ -132,9 +136,9 @@
 <p>While this process of either fixation or loss takes places, we would say that the mutation is <strong>segregating in the population.</strong> This means that some individuals will have it, and others will not (so it’s at some intermediate frequency), representing a <strong>polymorphism.</strong> If natural selection is <em>not</em> acting on the mutation (aka its fitness is “neutral”), or selection is acting <em>so weakly</em> that we can just as easily ignore it, we might describe the mutation as “drifting” through the population. Its frequency fluctuates over generations in the population just by chance. Again, given <em>enough</em> time, though, this mutation will eventually fix or be lost.</p>
 <p>When we take a phylogenetics or molecular evolution-oriented view of this process, mutations that are lost won’t make the cut - we only see mutations that end up fixing, aka <strong>substitutions.</strong> The figure below displays this outlook: On the left, we see a population of 7 dots. This population experiences mutations (red –&gt; blue for example), and some of these mutations fix while others are lost from the population. Zooming out of this process, we arrive at the right-side image. At a broad level, the <em>entire population</em> could be described as red -&gt; blue -&gt; orange. Green and purple were just blips on the radar that aren’t part of the long-term evolutionary process.</p>
 </div>
-<div id="evolution-in-dna" class="section level3" number="2.0.2">
-<h3><span class="header-section-number">2.0.2</span> Evolution in DNA</h3>
-<p>What is a mutation? It is a <em>random</em> (aka, not guided by a “need” for that mutation) mistake made during DNA replication. Those mutations that occur in the <em>germ line</em> (gametes: egg and sperm cells) are those that are relevant for evolution, since they can be passed on to the next generation. <em>Somatic mutations</em>, mutations which occur in literally any other cell of your body, happen regularly but usually are not a major issue. However, if enough somatic mutations occur in the “right” genes, this leads to cancer.</p>
+<div id="evolution-in-dna" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Evolution in DNA</h2>
+<p>What is a mutation? It is a <em>random</em> (aka, not guided by a “need” for that mutation) mistake made during DNA replication. Those mutations that occur in the <em>germ line</em> (gametes: egg and sperm cells) are those that are relevant for evolution, since they can be passed on to the next generation. <em>Somatic mutations</em>, mutations which occur in literally any other cell of your body, happen regularly but usually are not a major issue. That said, cancer occurs when “enough” somatic mutations occur in genes involved in cell cycle control (cancer is actually an evolutionary process!).</p>
 <p>Broadly speaking, there are <strong>three</strong> kinds of mutations to think about at the molecular level.</p>
 <ul>
 <li>The wrong nucleotide is used during DNA replication, which ultimately changes the nucleotide. If this mutation fixes (and that’s all we care about!), we call it a <strong>substitution.</strong> Therefore, in phylogenetics, we actually refer to nucleotide changes as a whole as <strong>substitutions.</strong> Due to redundancy in the genetic code (there are multiple codons for most amino acids), there are several different consequences when a nucleotide is changed within a <em>protein-coding region</em> (aka exons, not introns) of the genome:
@@ -145,15 +149,33 @@
 </ul></li>
 <li>Extra nucleotides are added during replication. This is called an <strong>insertion</strong> - some DNA is inserted. Similarly, some nucleotides can accidentally get skipped during replication. This is called a <strong>deletion</strong> - some DNA is deleted. Together, we refer to insertions and deletions as <strong>indels</strong> (pronounced like “incels” but with a “d”, sorry for the terrible reference point). Of course, when indels occur, there is going to be some kind of change to the final translated protein sequence.</li>
 </ul>
-<p>There is a related vocabulary term to introduce at this time: <strong>S</strong>ingle <strong>N</strong>ucleotide <strong>P</strong>olymorphism, called SNPs (“snips”). Note that evolutionary biologists tend to favor this term, but other fields like medical genomics might called it an “SNV” (pronounced as the letters S-N-V) for single nucleotide <strong>v</strong>arient. A SNP is a type of polymorphism (different individuals in a <em>population</em> have different allele versions - nothing is fixed!!) that occurs at a <em>single</em> nucleotide. They are very commonly-studied type of variation within populations. From the birds-eye-view of phylogenetics, we generally “ignore” SNPs since we only are considering fixed mutations. (But should we? Unclear! Is it really bad to ignore these? In certain circumstances, maybe!! This is something I’d like to study!)</p>
+<div id="a-brief-digression-snps" class="section level3" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> A brief digression: SNPs</h3>
+<p>There is a related vocabulary term to introduce at this time: <strong>S</strong>ingle <strong>N</strong>ucleotide <strong>P</strong>olymorphism, referred to as SNPs (“snips”). Note that evolutionary biologists tend to favor this term, but other fields like medical genomics might called it an “SNV” (pronounced as the letters S-N-V) for single nucleotide <strong>v</strong>arient. A SNP is a type of polymorphism (different individuals in a <em>population</em> have different allele versions - nothing is fixed!!) that occurs at a <em>single</em> nucleotide. They are very commonly-studied type of variation within populations. From the birds-eye-view of phylogenetics, we generally “ignore” SNPs since we only are considering fixed mutations. (But should we? Unclear! Is it really bad to ignore these? In certain circumstances, maybe!! This is something I’d like to study!)</p>
 </div>
+</div>
+<div id="fitness-consequences-of-mutations" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Fitness consequences of mutations</h2>
+<p>As evolutionary biologists, we also like to think about how mutations affect an organism’s <em>fitness</em>: Is a given mutation more likely to be a a) <strong>beneficial or advantageous mutation</strong> that increases an organism’s fitness (“beneficial”), b) <strong>deleterious mutation</strong> that decreases an organism’s fitness, or c) <strong>neutral mutation</strong> that does not effect an organism’s fitness<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
+<p>There has been a RAGEY debate in biology ongoing since the 1970s about this question. Here is a <em>brief</em><a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> glimpse into the origins and camps of this debate: A <em>very important</em> biologist named Motoo Kimura introduced a framework called “The Neutral Theory of Molecular Evolution” in the late 1960s. At the time, most biologists assumed that the majority of mutations were <em>deleterious</em> - it is much more likely that a typo in DNA replication breaks something rather than helps something. Think of this like a typo: What are the odds your typo leads to a misspelled gibberish word vs a new and interesting vocabulary term? Odds are that you have a misspelling, not a new insight. Kimura, however, reasoned: If most mutations are bad, why is there <em>so much natural variation</em> in the world? Why do we see <em>so many genetic polymorphisms</em> in populations?<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>. Kimura wondered<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> whether, in fact, this assumption that most mutations were deleterious was wrong: If mutations are usually bad, it shouldn’t be possible to see so much variation in species! Kimura still agreed that most mutations were unlikely to be advantageous, so his conclusion was that most mutations must be <strong>neutral</strong>, aka not influence fitness. Genetic drift would therefore be a dominant evolutionary force over natural selection.</p>
+<p>The jury is “still out” on whether mutations are primarily neutral or deleterious in their effect, but there are very serious and important people on either side of the debate who will assure you that “selectionists have won and the debate is over,” or conversely that “neutralists have won and the debate is over.” Of course, then, the debate rages on! In the chapter <a href="the-molecular-clock.html#the-molecular-clock">The Molecular Clock</a>, we’ll talk more about the Neutral Theory of Molecular Evolution and how, even though it may or may not be the overall “rule” for how evolution works, it still is useful in many important circumstances.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>There are also so-called “nearly-neutral” mutations, which affect fitness but <em>by such a tiny tiny amount</em> that we can roughly consider them to be neutral.<a href="background-molecular-evolution.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>An entire semester could be taught just on the background of this topic!<a href="background-molecular-evolution.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>Of course, we did not have true DNA sequencing in the mid-1900s, but protein gels were pioneered and widely used to get broad-scale glimpses into genetic differences among individuals in populations<a href="background-molecular-evolution.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>and did <em>a LOT of math</em><a href="background-molecular-evolution.html#fnref4" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="background-interpreting-building-and-using-phylogenies.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
