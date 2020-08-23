@@ -133,7 +133,7 @@ AACGATCGAGGTA
 
 
 
-All sequences are the same length (13 nucleotides) and presented as a multiple sequence alignment, so we can directly compare them. Looking column-by-column, there are 4 positions which differ between camel and moose and 9 that are the same. We would therefore say their *percent identity* is $9/13$ (69.2%), and the *percent difference* (or *proportion distance*) is $4/13$ (30.77%). We refer to the percent difference as a **P-distance.** We could also say that, considering these two sequences, 4 sites are *variable* and 9 sites are *conserved*.
+All sequences are the same length (13 nucleotides) and presented as a multiple sequence alignment, so we can directly compare them. Looking column-by-column, there are 4 positions which differ between camel and moose and 9 that are the same. We would therefore say their *percent identity* is $9/13$ (69.2%), and the *percent difference* (or *proportion distance*) is $4/13$ (30.77%). We refer to the percent difference as a **P-distance.** We could also say that, considering these two sequences, 4 sites are *variable* and 9 sites are *conserved* ("constant").
 
 The problem with P-distance is that it's calculated in a fairly naive manner if you are interested in the **amount of evolutionary change.** P-distance calculations make the assumption that each nucleotide difference is the result of a *single* substitution, and any unobserved differences are present because there were *no substitutions ever* at those sites. However, much like the honey badger, evolution does not care about simplicity. For example, consider position #1 where both species have the nucleotide `A`. The P-distance calculation assumes the most-recent common ancestor (MRCA) of camel and moose *also* had an `A` at this position, and nothing has changed since! This is quite a strong assumption, given evolution's honey badger style. It is entirely possible that there WERE other changes that occured! Maybe the ancestor was a `T` and both camel and moose independently had a substitution to `T`. This would be an example of *convergent molecular evolution.* It is also entirely possible that the MRCA was an `A`, but along the evolutionary lineage to camels, the site substituted to `G`, then to `T`, and then back to `A` - this would be an example of **multiple substitutions** at a single site.
 
@@ -152,17 +152,21 @@ Let's break this down, one part at a time: What do we mean by *probabilities (or
 It's not complete yet! There is another aspect to consider: In addition to just the probability of changing from one nucleotide to another, there is some *underlying probability* of BEING a given nucleotide in the first place! The matrix above assumes that all nucleotides are equally likely in a given gene, but this isn't always fair to expect. We therefore also include separate *parameters* for the so-called "base frequencies", also known as "equilibrium" or "stationary" frequencies^[There is actually *quite a bit more* math behind stationary frequencies, what they reall mean, and why we use them. We can discuss this separately if you really want the nitty gritty details, but the details aren't strictly necessary for working with these models in my lab]. We represent these values with the Greek letter pi, $\pi$. 
 
 
-Thus, the probability of a substitution from `A-->T` is the $\lambda$, the probability that a nucleotide changes, *weighted by* the probability $\pi_T$ of observing the *target* nucleotide T in the first place. **This is your very first Markov model!!!** It has five *parameters*:$\lambda$, and the four values for $\pi$, one for each nucleotide^[A true statistical phylogeneticist, however, would note there there are only *four* free parameters (aka parameters you need to understand the whole system): $\lambda$, and only THREE values for $\pi$! Since all the $\pi$'s must sum to 1 (there is a 100% chance of being _any_ nucleotide), you only need to know three of those values to know the fourth. Sneaky!]. 
+Thus, the probability of a substitution from `A-->T` is the $\lambda$, the probability that a nucleotide changes, *weighted by* the probability $\pi_T$ of observing the *target* nucleotide T in the first place. **This is your very first Markov model!!!** It has five *parameters*:$\lambda$, and the four values for $\pi$, one for each nucleotide^[A true statistical phylogeneticist, however, would note there there are only *four* free parameters (aka parameters you need to understand the whole system): $\lambda$, and only THREE values for $\pi$! Since all the $\pi$'s must sum to 1 (there is a 100% chance of being _any_ nucleotide), you only need to know three of those values to know the fourth. Sneaky!]. This model, like virtually *all models* you will encounter in my lab, is therefore comprised of stationary frequencies and substitution probabilities (also referred to as substitution rates). 
 
 
-However, this is pretty unrealistic: As biologists, we know that nucleotides aren't all the same - there are purines (A and G) and pyrimidines (C and T). I will use $R$ to mean purine and $Y$ to mean pyrimidine. $R\rightarrow R$ and $Y\rightarrow Y$ mutations are known as *transitions*, and due to shared biochemistry, they occur much more easily than do *transversions* ($R\rightarrow Y$ or $Y\rightarrow R$). We might want our model to reflect this biological information! We can do this by adding another parameter to our model that captures **transition/tranversion bias** - the underlying biological system's preference for transitions over transversions. Commonly we represent this quantity with the Greek letter $\kappa$, kappa.
+However, this is _still_ pretty unrealistic: As biologists, we know that nucleotides aren't all the same - there are purines (A and G) and pyrimidines (C and T). I will use $R$ to mean purine and $Y$ to mean pyrimidine. $R\rightarrow R$ and $Y\rightarrow Y$ mutations are known as *transitions*, and due to shared biochemistry, they occur much more easily than do *transversions* ($R\rightarrow Y$ or $Y\rightarrow R$). We might want our model to reflect this biological information! We can do this by adding another parameter to our model that captures **transition/tranversion bias** - the underlying biological system's preference for transitions over transversions. Commonly we represent this quantity with the Greek letter $\kappa$, kappa. This therefore *more complex* than the simple one-rate model introduced above since it has another parameter. The more parameters, the more complex a model is.
 
+Over the years, people have taken model complexity to its natural conclusion and have come up with a *lot* of ways to parameterize these models. The most complex model is referred to as the "GTR" (general time-reversible) model. In a GTR model, *all* substitution probabilities are different, and *all* states have their own stationary frequency. That said, the phrase "time-reversible" indicates that substitution probabilities are the same forwards and backwards in time: The probability of $A\rightarrow G$, for example, is the same as $G\rightarrow A$. GTR models are therefore comprised of a *symmetric*[Same forward and backwards!] matrix of substitution probabilities, and a *vector*^[Don't panic! This just means "one-dimensional matrix" - a list!] of state frequencies.
+
+
+**The process of building a phylogeny using model-based methods is how these parameters get values!!** TODO: software jointly *optimizes* (finds the best values for, using probability) the model's parameters and the tree. 
 
 ### Key properties of Markov processes
 
 Markov processes are **memoryless**: The probability of changing from one state to another depends ONLY on the current state, and NOT AT ALL on which states the chain was at previously. Consider this in terms of DNA: Imagine a site in the genome that has undergone substitutions over time as $G \rightarrow A\rightarrow T \rightarrow C \rightarrow A \rightarrow T$. You'll notice that, at two separate times in the DNA's history, it experienced the $A\rightarrow T$ substitution. For the first one, the DNA site had previously been a $G$, but for the second one, the DNA site had been a $C$. The memoryless Markov process doesn't care about the $G$ and the $C$ - the probability of going $A\rightarrow T$ does NOT depend on those previous nucleotides at all. The probability of going $A\rightarrow T$ is always the same probability forever and ever in this chain.
 
-In addition, most applications (but this is starting to change, maybe!) in phylogenetics use **time-reversible** Markov models. Time-reversible implies that a given Markov chain has the same probabilities moving forwards and backwards in time. This is not necessarily a fair biological assumption: While evolution does not have a goal, it is clearly moving in a direction forward in time. The reason we tend to use time-reversible models is that they make the math and computing aspects of building and analyzing phylogenies, *a lot easier.* This is a common theme in modeling: Sometimes, the right modeling framework we'd like to use is simply too challenging for our computers. We need to use approximations and "short-cuts" a lot of the time to make sure the computer program can achieve results in, say, less than 100,000 years. The field is always moving forward, and new computational tricks are being established all the time! One day, I hope we will see the widespread use of *non*-time-reversible models in phylogenetics!
+In addition, most applications (but this is starting to change, maybe!) in phylogenetics use **time-reversible** Markov models. Time-reversible implies that a given Markov chain has the same probabilities moving forwards and backwards in time^[The actual definition is much more technical and beyond the scope of what you *need* to know for this research. If you want the real mathy details, let's chat!], e.g. the probability of $A\rightarrow G$ is the same as $G\rightarrow A$. This is not necessarily a fair biological assumption. The reason we tend to use time-reversible models is that they make the math and computing aspects of building and analyzing phylogenies, *a lot easier.* This is a common theme in modeling: Sometimes, the right modeling framework we'd like to use is simply too challenging for our computers. We need to use approximations and "short-cuts" a lot of the time to make sure the computer program can achieve results in, say, less than 100,000 years. The field is always moving forward, and new computational tricks are being established all the time! One day, I hope we will see the widespread use of *non*-time-reversible models in phylogenetics!
 
 
 ### Markov chains and multiple sequence alignments
@@ -170,38 +174,36 @@ In addition, most applications (but this is starting to change, maybe!) in phylo
 We consider each column in a multiple sequence alignment to be the *realization of a Markov process (aka a Markov chain) __along__ a phylogeny*. The image below shows an example of the relationship between a column in an MSA and what it's Markov chain *might* look like. What you see in the image below includes the *ancestral states* - ie, what *was* the nucleotide at that column for an unknown ancestor? In general, we can't ever really know the true ancestors, since they are extinct. Our fancy statistical methods use *probability* to infer the most likely ancestral states at all internal nodes on the tree. We refer to this as *ancestral state reconstruction.* In the example below, I am assuming we know the ancestors with certainty, which would be the case for *simulated data* that I use a lot in my research.
 
 
+### Protein models
+
+Above, we described DNA models with four states (A, C, G, T). In fact, we also have models focused on *protein* or *codon* states too. Protein models are comprised of 20x20 matrices (since there are 20 amino acids), and codon models are comprised of 61x61 matrices (since there are 61 *sense* codons, and we ignore the 3 stop codons TAG, TAA, and TGA). We usually use protein models to build phylogenies out of amino-acid data. We do not usually use codon models to build phylogenies due to the computational intensiveness of dealing with 61x61 matrices, but we often use codon models to study *natural selection in DNA.* These models are introduced and described in the section [Measuring evolutionary rates]. 
+
+Like nucleotide models, amino-acid models can be broken down into a symmetric 20x20 matrix and a vector of stationary frequencies. However, amino acids themselves *do not evolve* - nucleotides evolve, and this sometimes leads to a change in the protein product. Therefore, proteins evolve over time *due to changes in their coding DNA.* This is just something to bear in mind :)
+
+Unfortunately, because protein models are 20x20, optimization is super hard. There are some statistical problems with trying to optimize values for *that many parameters* - you need a LOT of data to get precise, unbiased estimates. So, the field has decided to largely bail on this and instead use "pre-canned" models built from training datasets. Spielman thinks this is a mediocre prospect.
 
 
+### Rate variation or heterogeneity
+
+The models as described assume that all sites evolve according to the same process. Early on, people observed that different sites in DNA evolve at different rates. (example of protein image here). We want to include this information in our models! One common way to do this is with a *discrete gamma distribution*...Huh?
+
+insert figure here, explain gamma. 
+
+In the end, you typically have *four* values drawn from this distribution to represent four different categories of sites. You actually multiply the model parameters by a given rate, and this increases or decreases the probabilities.
 
 
-
-<!--
-We are in statistics world now which means everything is probabilities. What is the prob of mutation a -> c? c-> t? what about if we consider data at the protein level? prob tryp -> tyro?
-
-Introduce the word *parameter* as variable. Introduce the word *estimate* as it differs from parameter.
-
-Weather example of rain/sunshine from bayesian class and show an example of a chain.
-
-Then an example of a chain with DNA.
--->
-
-
-
-We often use "time-reversible" models which means probabilities are the same forward and background (ok, that's not what this really means, but you can go look up kolmogorov and detailed balance if you want to go to grad school in this). 
-
-## Flavors (DNA, protein, codon) and applications
-
-## Phenomenological vs mechanistic
 
 ## Choosing a model
 This is a broader concept in statistics: How do I choose a model for my data? What variables should I include, aka what level of complexity? We want to find the middle ground in under/overfitting and deal with the precision/bias tradeoff. 
 
-Relative vs absolute.
-Relative says: I have a measure of "goodness-of-fit" and a family of candidate models I could use. We can rank them relative to one another.
-Absolute says: How well does this model recapitulate trends in my data? Also referred to as tests of model adequacy. DOes the model adequately describe my data?
+Remember the concept of *sample size*: In order to accurately infer values from data, our data should be large. Small samples result in bias. Therefore we'd like the find the model with the right number of parameters for the amount of data at hand.
+
+Broadly speaking, there are two traditions of model selection: *relative model selection* and *absolute model selection.*
+
+**Relative model selection** ranks all models by a given measurement that tells you how well your model works for the data at hand. In relative model selection, you provide a list of candidate models you could use for your dataset, a fancy software ranks the models in order, and you then select the best-ranking model for analyses. This approach has become the standard in phylogenetics because it is relatively simple to perform, *and* a highly usable software for doing this procedure was introduced in the late 1990. **A significant chunk of my research program is trying to stop people from using this procedure!** A lot of recent research, including my own, has demonstrated that for a lot of applications, relative model selection does not necessarily help you achieve a more correct answer, but it also doesn't *harm* your analysis. It has just become a dogmatic assumption that everyone must use this analysis in molecular phylogenetics, and it is my solemn duty to tear it all down. 
 
 
-Finally the adage "All models are wrong but some are useful" and other useful Boxisms. Remember we are never going to actually model reality. 
+Importantly, relative model selection is entirely incapable of asking, "Should I even be considering these models *in the first place*?" It assumes any model you are ranking is a reasonable potential candidate model. Of course, we might prefer a procedure that actually asks if a given model is worth considering at all! This is **absolute model selection,** which are often referred to as **model adequacy tests.** This framework asks, "How well does *a given model* capture trends in my data?" It therefore only evaluates one model at a time, rather than comparing dozens or hundreds of candidate models to one another. This means absolute model selection is more computationally intensive (aka, takes a longer time), but in this researcher's opinion, it is a *much* better bet than is relative model selection. **Future research projects in my lab may seek to more formally examine the relationship between absolute and relative model selection: For example, are high-ranking models actually adequate? Are low-ranking models actually inadequate?**
 
 
 # Building your phylogeny
